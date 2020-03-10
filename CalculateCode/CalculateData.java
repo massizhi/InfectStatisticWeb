@@ -7,14 +7,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-/*版本1.0*/
+/*版本2.0*/
 
 public class CalculateData {
-	static int dailycount=0;//当天变化数据的条数
+	static int dailycount=0;//当天所有变化数据的条数
+	static int nowcount=0;//现有数据条数
 	static int allcount=0;//累计数据条数
-	static line[] all=new line[34];//初始化结果，当天结果
-	static line[] result=new line[34];//总的排序后结果，累计结果
-    static line[] proresult=new line[34];//筛选省份后的排序后结果
+	static line[] all=new line[34];//初始化结果，当天变化结果
+	static line[] result=new line[34];//总的排序后结果，当天结果
+	static line[] allResult=new line[34];//总的排序后结果，累计结果
     static String topath="D:\\test.txt";//输出文档路径
     static String frompath="D:\\log\\";//log文件路径
     static int index=0;//控制是否输入日期比日志最早一天还早，若是则值为-2
@@ -22,15 +23,40 @@ public class CalculateData {
     static int timeLimits;//获取累计数据值为1，当天数据值为2
     
     public static void main(String[] args) throws IOException {
-		System.out.println("输入查找日期、数据范围、可选省份、数据时间");
+		System.out.println("输入查找日期、数据范围(全国数据输入1，省份数据输入2)、省份名（若前一项选择2则需输入）、数据类型（变化量输入1，现有输入2，累计输入3）、感染信息（ip,sp,cure,dead）");
 		Scanner in=new Scanner(System.in);
+		String province="";
         String date=in.next();//输入字符串
         int boundary=Integer.parseInt(in.next());
-        String province=in.next();
+        if(boundary==2) {
+        	province=in.next();
+        }
         timeLimits=in.nextInt();
-        in.close();
-        CalData dailyData=new CalData(date, boundary, province,timeLimits);        
+        String type=in.next();//获得需要的感染类型
+        CalData dailyData=new CalData(date, boundary, province,timeLimits);     
+        getData(type,dailyData);
+        in.close();       
 	}
+    
+    static void getData(String type,CalData data) {
+    	switch (type) {
+		case "ip":
+			System.out.println(data.getInfect());
+			break;
+		case "sp":
+			System.out.println(data.getSup());
+			break;
+		case "cure":
+			System.out.println(data.getCure());
+			break;
+		case "dead":
+			System.out.println(data.getDead());
+			break;
+		default:
+			System.out.println("感染类型输入有误！");
+			break;
+		}
+    }
     
     static class line{//统计之后的病例每条的结构
 		String location;//地理位置
@@ -51,9 +77,7 @@ public class CalculateData {
 		
 		String printline() {
 			return(location+" 感染患者"+infected+"人 疑似患者"+suspected+"人 治愈"+cure+"人 死亡"+dead+"人");
-		}
-		
-		
+		}		
 	}
     
 	static public class CalData {//今日或累计的数据统计
@@ -66,7 +90,7 @@ public class CalculateData {
 		private boolean useRegion=true;//获得地区数据
 		private String province="";
 		
-		/*boundary的值决定是想要全国数据（boundary=1）还是省份数据,timeLimits的值决定是现今数据（timeLimits=1）还是累计数据*/
+		/*boundary的值决定是想要全国数据（boundary=1）还是省份数据,timeLimits的值决定是当天现有变化数据（timeLimits=1）还是现有数据*/
 		public CalData(String passDate,int boundary,String passPro,int timeLimits) throws IOException {
 			date=passDate;
 			if (boundary==1) {//全国数据
@@ -76,10 +100,13 @@ public class CalculateData {
 				useCountry=false;
 				province=passPro;
 			}
-			if (timeLimits==1) {//当天
+			if (timeLimits==1) {//现有变化量
 				calOneData();
 			}
-			else {
+			else if (timeLimits==2) {//现有量
+				calNowData();
+			}
+			else {//累计量
 				calAllData();
 			}
 		}
@@ -100,7 +127,7 @@ public class CalculateData {
 			return suspected;
 		}
 		
-		/*现有确诊*/
+		/*现有变化量确诊*/
 		public void calOneData() throws IOException {
 			int index=findPot(date);//存储指定日期日志索引
 			int i=0;//查找省份数据的索引
@@ -113,22 +140,85 @@ public class CalculateData {
 			}
 			else {
 				readLog(index);
-				if (useCountry) {
+				if (useCountry) {//当天全国数据
 					line allCountry=calAll(all,dailycount);
 					infected=allCountry.infected;
 					suspected=allCountry.suspected;
 					cure=allCountry.cure;
 					dead=allCountry.dead;
-					
 					//System.out.print("sssss");
 				}
-				else {
+				else {//当天某省份数据
 					while (i<dailycount) {
 						if (all[i].location.equals(province)) {
 							infected=all[i].infected;
 							suspected=all[i].suspected;
 							cure=all[i].cure;
 							dead=all[i].dead;
+							hasData=1;
+							break;
+						}
+						i++;
+					}
+					if (hasData==0) {
+						infected=0;
+						suspected=0;
+						cure=0;
+						dead=0;
+					}
+				}
+			}
+		}
+		
+		/*现有确诊*/
+		public void calNowData() throws IOException {
+			int index=findPot(date);//存储指定日期日志索引
+			int i=0;//查找省份数据的索引
+			int j=0;//控制前几天所有的数据索引
+			int hasData=0;//检验该省份是否有数据
+			File file = new File(frompath);
+			String[] filename = file.list();//获取所有日志文件名     	
+			if (index==-2) {//比最早的日期还早
+				infected=0;
+				suspected=0;
+				cure=0;
+				dead=0;
+			}
+			else {
+				while (j<=index) {
+					FileInputStream fs=new FileInputStream(frompath+filename[j]);
+				    InputStreamReader is=new InputStreamReader(fs,"UTF-8");
+				    BufferedReader br=new BufferedReader(is);
+				    String s="";				    
+				    while ((s=br.readLine())!=null){//一行一行读
+				    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//排除注释掉的内容
+				    		continue;
+				    	}
+				    	else if (s.equals("")) {
+				    		continue;
+				    	}
+				    	else {
+				    		String[] sp =s.split(" ");//分隔开的字符串
+				    		statistics(sp,result,nowcount);
+				    	}
+		    	    }
+				    br.close();
+				    j++;
+		    	}				
+				if (useCountry) {
+					line allCountry=calAll(result,nowcount);
+					infected=allCountry.infected;
+					suspected=allCountry.suspected;
+					cure=allCountry.cure;
+					dead=allCountry.dead;
+				}
+				else {
+					while (i<nowcount) {
+						if (result[i].location.equals(province)) {
+							infected=result[i].infected;
+							suspected=result[i].suspected;
+							cure=result[i].cure;
+							dead=result[i].dead;
 							hasData=1;
 							break;
 						}
@@ -173,27 +263,26 @@ public class CalculateData {
 				    	}
 				    	else {
 				    		String[] sp =s.split(" ");//分隔开的字符串
-				    		statistics(sp,result,allcount);
+				    		allStatistics(sp,allResult,allcount);
 				    	}
 		    	    }
 				    br.close();
 				    j++;
 		    	}				
 				if (useCountry) {
-					line allCountry=calAll(result,allcount);
+					line allCountry=calAll(allResult,allcount);
 					infected=allCountry.infected;
 					suspected=allCountry.suspected;
 					cure=allCountry.cure;
 					dead=allCountry.dead;
-					System.out.print(cure);
 				}
 				else {
 					while (i<allcount) {
-						if (result[i].location.equals(province)) {
-							infected=result[i].infected;
-							suspected=result[i].suspected;
-							cure=result[i].cure;
-							dead=result[i].dead;
+						if (allResult[i].location.equals(province)) {
+							infected=allResult[i].infected;
+							suspected=allResult[i].suspected;
+							cure=allResult[i].cure;
+							dead=allResult[i].dead;
 							hasData=1;
 							break;
 						}
@@ -209,7 +298,77 @@ public class CalculateData {
 			}
 		}
 	}
-		
+	
+	/*计算累计情况*/
+	static void allStatistics(String[] sp,line[] all,int count) {   	
+    	String location="";    	
+    	location=sp[0];
+    	line line1;
+    	if (!isExistlocation(location,all,count)) {//不存在对应该省的记录
+    		line1=new line(location,0,0,0,0);//新建数据条   		
+    		all[count]=line1;
+    		count++;
+    	}
+    	else {
+    		line1=getLine(location,all,count);//获得原有的数据条
+    	}
+    	if (sp[1].equals("新增")) {
+    		if (sp[2].equals("感染患者")) {//获得感染人数
+    			line1.infected+=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));    			
+    		}
+    		else {//疑似患者
+    			line1.suspected+=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));
+    		}
+    	}
+    	else if (sp[1].equals("死亡")) {
+    		line1.dead+=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
+    	}
+    	else if (sp[1].equals("治愈")) {
+    		line1.cure+=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
+    	}
+    	else if (sp[1].equals("疑似患者")) {
+    		if (sp[2].equals("确诊感染")){
+    			int change=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));//改变人数
+    			line1.infected+=change;
+    			line1.suspected-=change; 			
+    		}
+    		else {//流入情况
+    			String tolocation=sp[3];//流入省
+    			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//改变人数
+    			line line2;
+    	    	if (!isExistlocation(tolocation,all,count)) {//不存在对应该省的记录
+    	    		line2=new line(tolocation,0,0,0,0);//新建数据条
+    	    		all[count]=line2;
+    	    		count++;
+    	    	}
+    	    	else {
+    	    		line2=getLine(tolocation,all,count);//获得原有的数据条
+    	    	}
+    			line1.suspected-=change;
+    			line2.suspected+=change;
+    		}
+    	}
+    	else if (sp[1].equals("排除")) {
+    		line1.suspected-=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));   		
+    	}
+    	else {//感染患者流入情况
+    		String tolocation=sp[3];//流入省
+    		//System.out.print(sp[0]);
+			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//改变人数
+			line line2;
+	    	if(!isExistlocation(tolocation,all,count)) {//不存在对应该省的记录
+	    		line2=new line(tolocation,0,0,0,0);//新建数据条
+	    		all[count]=line2;
+	    		count++;
+	    	}
+	    	else {
+	    		line2=getLine(tolocation,all,count);//获得原有的数据条
+	    	}
+			line2.infected+=change;   		
+    	}
+		allcount=count;
+    }
+	
 	/*读取指定日期的当天的数据情况*/
 	public static void readLog(int index) throws IOException {	
 		File file = new File(frompath);
@@ -325,7 +484,7 @@ public class CalculateData {
     		dailycount=count;
     	}
     	else {
-			allcount=count;
+			nowcount=count;
 		}
     }
 	
@@ -358,6 +517,7 @@ public class CalculateData {
     	return null;//不会用到
     }
 	
+	/*找出日期所在所有日志的索引*/
 	static int findPot(String date) {
     	File file = new File(frompath);
         String[] filename = file.list();//获取所有日志文件名      
