@@ -7,15 +7,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-/*版本2.0*/
+/*版本3.0*/
 
 public class CalculateData {
 	static int dailycount=0;//当天所有变化数据的条数
 	static int nowcount=0;//现有数据条数
 	static int allcount=0;//累计数据条数
+	static int changecount=0;//累计变化数据的条数
 	static line[] all=new line[34];//初始化结果，当天变化结果
 	static line[] result=new line[34];//总的排序后结果，当天结果
 	static line[] allResult=new line[34];//总的排序后结果，累计结果
+	static line[] changeResult=new line[34];//累计变化结果
     static String topath="D:\\test.txt";//输出文档路径
     static String frompath="D:\\log\\";//log文件路径
     static int index=0;//控制是否输入日期比日志最早一天还早，若是则值为-2
@@ -23,7 +25,8 @@ public class CalculateData {
     static int timeLimits;//获取累计数据值为1，当天数据值为2
     
     public static void main(String[] args) throws IOException {
-		System.out.println("输入查找日期、数据范围(全国数据输入1，省份数据输入2)、省份名（若前一项选择2则需输入）、数据类型（变化量输入1，现有输入2，累计输入3）、感染信息（ip,sp,cure,dead）");
+		System.out.print("输入查找日期、数据范围(全国数据输入1，省份数据输入2)、省份名（若前一项选择2则需输入）、");
+		System.out.println("数据类型（现存变化量输入1，现有输入2，累计输入3，累计变化量输入4）、感染信息（ip,sp,cure,dead）");
 		Scanner in=new Scanner(System.in);
 		String province="";
         String date=in.next();//输入字符串
@@ -106,8 +109,11 @@ public class CalculateData {
 			else if (timeLimits==2) {//现有量
 				calNowData();
 			}
-			else {//累计量
+			else if (timeLimits==3){//累计量
 				calAllData();
+			}
+			else {
+				calSumData();//累计变化量
 			}
 		}
 		
@@ -137,6 +143,7 @@ public class CalculateData {
 				suspected=0;
 				cure=0;
 				dead=0;
+				isChanged=1;//还原
 			}
 			else {
 				readLog(index);
@@ -165,6 +172,52 @@ public class CalculateData {
 						suspected=0;
 						cure=0;
 						dead=0;
+						hasData=1;//还原
+					}
+				}
+			}
+		}
+		
+		/*累计变化量确诊*/
+		public void calSumData() throws IOException {
+			int index=findPot(date);//存储指定日期日志索引
+			int i=0;//查找省份数据的索引
+			int hasData=0;//检验该省份是否有数据
+			if (index==-2||isChanged==0) {//比最早的日期还早或该日期内数据无变化
+				infected=0;
+				suspected=0;
+				cure=0;
+				dead=0;
+				isChanged=1;//还原
+			}
+			else {
+				readLog(index);
+				if (useCountry) {//当天全国数据
+					line allCountry=calAll(changeResult,changecount);
+					//System.out.print(changecount);
+					infected=allCountry.infected;
+					suspected=allCountry.suspected;
+					cure=allCountry.cure;
+					dead=allCountry.dead;
+				}
+				else {//当天某省份数据
+					while (i<changecount) {
+						if (changeResult[i].location.equals(province)) {
+							infected=changeResult[i].infected;
+							suspected=changeResult[i].suspected;
+							cure=changeResult[i].cure;
+							dead=changeResult[i].dead;
+							hasData=1;
+							break;
+						}
+						i++;
+					}
+					if (hasData==0) {
+						infected=0;
+						suspected=0;
+						cure=0;
+						dead=0;
+						hasData=1;//还原
 					}
 				}
 			}
@@ -367,9 +420,10 @@ public class CalculateData {
 			line2.infected+=change;   		
     	}
 		allcount=count;
+		changecount=count;
     }
 	
-	/*读取指定日期的当天的数据情况*/
+	/*读取指定日期的当天的数据变化情况*/
 	public static void readLog(int index) throws IOException {	
 		File file = new File(frompath);
 		String[] filename = file.list();//获取所有日志文件名     	
@@ -386,11 +440,15 @@ public class CalculateData {
 	    	}
 	    	else {
 	    		String[] sp =s.split(" ");//分隔开的字符串
-	    		statistics(sp,all,dailycount);
+	    		if (timeLimits==4) {//累计变化量
+	    			allStatistics(sp,changeResult,changecount);
+	    		}
+	    		else {//当天变化量
+	    			statistics(sp,all,dailycount);
+	    		}	    		
 	    	}
 	    }
 	    br.close();
-	    //printtxt(all);
 	}
 	
 	/*计算全国疫情情况*/
