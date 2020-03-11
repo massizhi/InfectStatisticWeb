@@ -6,37 +6,92 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- 引入 ECharts 文件 -->
     <script src="echarts.min.js"></script>
+    <script src="china.js"></script>
 <title>ECharts</title>
 </head>
 <body>
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="china1" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+        var myChart = echarts.init(document.getElementById('china1'));
 
         // 指定图表的配置项和数据
         var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
+        title : {
+            text: '',
+            subtext: '当前现有确诊病例数，排除治愈、死亡。',
+            x:'center'
+        },
+        tooltip : {//提示框组件。
+            trigger: 'item'
+        },
+        visualMap: {
+            type: 'piecewise',
+            pieces: [
+                {min: 1500,color: '#6D000E'},
+                {min: 900, max: 1500,color: '#A30014'},
+                {min: 310, max: 1000,color: '#B8741A'},
+                {min: 200, max: 300,color: '#F59A23'},
+                {min: 1, max: 200,color: '#FACD91'},
+                {max: 0,color: '#F2F2F2'}
+              	//label: '';
+            ],
+        },
+        series: [
+            {
+                name: '确诊病例',
+                type: 'map',
+                mapType: 'china',
+                label: {
+                    show: true,
+                    color: '#000000',
+                    fontSize:10
+                },
+                data: [
+                    {name: '北京',value: 5},
+                    {name: '天津',value: Math.round(Math.random()*2000)},
+                    {name: '上海',value: Math.round(Math.random()*2000)},
+                    {name: '重庆',value: Math.round(Math.random()*2000)},
+                    {name: '河北',value: 0},
+                    {name: '河南',value: Math.round(Math.random()*2000)},
+                    {name: '云南',value: 123},
+                    {name: '辽宁',value: 305},
+                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
+                    {name: '湖南',value: 200},
+                    {name: '安徽',value: Math.round(Math.random()*2000)},
+                    {name: '山东',value: Math.round(Math.random()*2000)},
+                    {name: '新疆',value: Math.round(Math.random()*2000)},
+                    {name: '江苏',value: Math.round(Math.random()*2000)},
+                    {name: '浙江',value: Math.round(Math.random()*2000)},
+                    {name: '江西',value: Math.round(Math.random()*2000)},
+                    {name: '湖北',value: Math.round(Math.random()*2000)},
+                    {name: '广西',value: Math.round(Math.random()*2000)},
+                    {name: '甘肃',value: Math.round(Math.random()*2000)},
+                    {name: '山西',value: Math.round(Math.random()*2000)},
+                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
+                    {name: '陕西',value: Math.round(Math.random()*2000)},
+                    {name: '吉林',value: Math.round(Math.random()*2000)},
+                    {name: '福建',value: Math.round(Math.random()*2000)},
+                    {name: '贵州',value: Math.round(Math.random()*2000)},
+                    {name: '广东',value: Math.round(Math.random()*2000)},
+                    {name: '青海',value: Math.round(Math.random()*2000)},
+                    {name: '西藏',value: Math.round(Math.random()*2000)},
+                    {name: '四川',value: Math.round(Math.random()*2000)},
+                    {name: '宁夏',value: Math.round(Math.random()*2000)},
+                    {name: '海南',value: Math.round(Math.random()*2000)},
+                    {name: '台湾',value: Math.round(Math.random()*2000)},
+                    {name: '香港',value: Math.round(Math.random()*2000)},
+                    {name: '澳门',value: Math.round(Math.random()*2000)}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+    myChart.on('mouseover', function (params) {
+        var dataIndex = params.dataIndex;
+        console.log(params);
+    });
+</script>
 </body>
 </html>
