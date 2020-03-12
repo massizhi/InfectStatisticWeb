@@ -7,35 +7,35 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-/*°æ±¾3.0*/
+/*ï¿½æ±¾3.0*/
 
 public class CalculateData {
-	static int dailycount=0;//µ±ÌìËùÓĞ±ä»¯Êı¾İµÄÌõÊı
-	static int nowcount=0;//ÏÖÓĞÊı¾İÌõÊı
-	static int allcount=0;//ÀÛ¼ÆÊı¾İÌõÊı
-	static int changecount=0;//ÀÛ¼Æ±ä»¯Êı¾İµÄÌõÊı
-	static line[] all=new line[34];//³õÊ¼»¯½á¹û£¬µ±Ìì±ä»¯½á¹û
-	static line[] result=new line[34];//×ÜµÄÅÅĞòºó½á¹û£¬µ±Ìì½á¹û
-	static line[] allResult=new line[34];//×ÜµÄÅÅĞòºó½á¹û£¬ÀÛ¼Æ½á¹û
-	static line[] changeResult=new line[34];//ÀÛ¼Æ±ä»¯½á¹û
-    static String topath="D:\\test.txt";//Êä³öÎÄµµÂ·¾¶
-    static String frompath="D:\\log\\";//logÎÄ¼şÂ·¾¶
-    static int index=0;//¿ØÖÆÊÇ·ñÊäÈëÈÕÆÚ±ÈÈÕÖ¾×îÔçÒ»Ìì»¹Ôç£¬ÈôÊÇÔòÖµÎª-2
-    static int isChanged=1;//Ö¸¶¨ÈÕÆÚÏà±ÈÇ°¼¸ÌìµÄÊı¾İÓĞËù±ä»¯
-    static int timeLimits;//»ñÈ¡ÀÛ¼ÆÊı¾İÖµÎª1£¬µ±ÌìÊı¾İÖµÎª2
+	static int dailycount=0;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ä»¯ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ï¿½
+	static int nowcount=0;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static int allcount=0;//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static int changecount=0;//ï¿½Û¼Æ±ä»¯ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ï¿½
+	static line[] all=new line[34];//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½ï¿½
+	static line[] result=new line[34];//ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	static line[] allResult=new line[34];//ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¼Æ½ï¿½ï¿½
+	static line[] changeResult=new line[34];//ï¿½Û¼Æ±ä»¯ï¿½ï¿½ï¿½
+    static String topath="D:\\test.txt";//ï¿½ï¿½ï¿½ï¿½Äµï¿½Â·ï¿½ï¿½
+    static String frompath="D:\\log\\";//logï¿½Ä¼ï¿½Â·ï¿½ï¿½
+    static int index=0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ì»¹ï¿½ç£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª-2
+    static int isChanged=1;//Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä»¯
+    static int timeLimits;//ï¿½ï¿½È¡ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª2
     
     public static void main(String[] args) throws IOException {
-		System.out.print("ÊäÈë²éÕÒÈÕÆÚ¡¢Êı¾İ·¶Î§(È«¹úÊı¾İÊäÈë1£¬Ê¡·İÊı¾İÊäÈë2)¡¢Ê¡·İÃû£¨ÈôÇ°Ò»ÏîÑ¡Ôñ2ÔòĞèÊäÈë£©¡¢");
-		System.out.println("Êı¾İÀàĞÍ£¨ÏÖ´æ±ä»¯Á¿ÊäÈë1£¬ÏÖÓĞÊäÈë2£¬ÀÛ¼ÆÊäÈë3£¬ÀÛ¼Æ±ä»¯Á¿ÊäÈë4£©¡¢¸ĞÈ¾ĞÅÏ¢£¨ip,sp,cure,dead£©");
+		System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¡ï¿½ï¿½ï¿½ï¿½İ·ï¿½Î§(È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2)ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½Ñ¡ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£©ï¿½ï¿½");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½Ö´ï¿½ä»¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½Û¼Æ±ä»¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½Ï¢ï¿½ï¿½ip,sp,cure,deadï¿½ï¿½");
 		Scanner in=new Scanner(System.in);
 		String province="";
-        String date=in.next();//ÊäÈë×Ö·û´®
+        String date=in.next();//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
         int boundary=Integer.parseInt(in.next());
         if(boundary==2) {
         	province=in.next();
         }
         timeLimits=in.nextInt();
-        String type=in.next();//»ñµÃĞèÒªµÄ¸ĞÈ¾ÀàĞÍ
+        String type=in.next();//ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä¸ï¿½È¾ï¿½ï¿½ï¿½ï¿½
         CalData dailyData=new CalData(date, boundary, province,timeLimits);     
         getData(type,dailyData);
         in.close();       
@@ -56,17 +56,17 @@ public class CalculateData {
 			System.out.println(data.getDead());
 			break;
 		default:
-			System.out.println("¸ĞÈ¾ÀàĞÍÊäÈëÓĞÎó£¡");
+			System.out.println("ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			break;
 		}
     }
     
-    static class line{//Í³¼ÆÖ®ºóµÄ²¡ÀıÃ¿ÌõµÄ½á¹¹
-		String location;//µØÀíÎ»ÖÃ
-		int infected;//¸ĞÈ¾»¼ÕßÈËÊı
-		int suspected;//ÒÉËÆ»¼ÕßÈËÊı
-		int cure;//ÖÎÓúÈËÊı
-		int dead;//ËÀÍöÈËÊı
+    static class line{//Í³ï¿½ï¿½Ö®ï¿½ï¿½Ä²ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ä½á¹¹
+		String location;//ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+		int infected;//ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int suspected;//ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int cure;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		int dead;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		line(String plocation,int pgrhz,int pyshz,int precover,int pdead){
 			location=plocation;
@@ -79,41 +79,41 @@ public class CalculateData {
 		line(){}
 		
 		String printline() {
-			return(location+" ¸ĞÈ¾»¼Õß"+infected+"ÈË ÒÉËÆ»¼Õß"+suspected+"ÈË ÖÎÓú"+cure+"ÈË ËÀÍö"+dead+"ÈË");
+			return(location+" ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½"+infected+"ï¿½ï¿½ ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½"+suspected+"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"+cure+"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"+dead+"ï¿½ï¿½");
 		}		
 	}
     
-	static public class CalData {//½ñÈÕ»òÀÛ¼ÆµÄÊı¾İÍ³¼Æ
+	static public class CalData {//ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Û¼Æµï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½
 		private int infected;
 		private int cure;
 		private int dead;
 		private int suspected;
 		private String date;
-		private boolean useCountry=true;//»ñµÃÈ«¹úÊı¾İ
-		private boolean useRegion=true;//»ñµÃµØÇøÊı¾İ
+		private boolean useCountry=true;//ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		private boolean useRegion=true;//ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		private String province="";
 		
-		/*boundaryµÄÖµ¾ö¶¨ÊÇÏëÒªÈ«¹úÊı¾İ£¨boundary=1£©»¹ÊÇÊ¡·İÊı¾İ,timeLimitsµÄÖµ¾ö¶¨ÊÇµ±ÌìÏÖÓĞ±ä»¯Êı¾İ£¨timeLimits=1£©»¹ÊÇÏÖÓĞÊı¾İ*/
+		/*boundaryï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÈ«ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½boundary=1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,timeLimitsï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ä»¯ï¿½ï¿½ï¿½İ£ï¿½timeLimits=1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 		public CalData(String passDate,int boundary,String passPro,int timeLimits) throws IOException {
 			date=passDate;
-			if (boundary==1) {//È«¹úÊı¾İ
+			if (boundary==1) {//È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				useRegion=false;
 			}
 			else {
 				useCountry=false;
 				province=passPro;
 			}
-			if (timeLimits==1) {//ÏÖÓĞ±ä»¯Á¿
+			if (timeLimits==1) {//ï¿½ï¿½ï¿½Ğ±ä»¯ï¿½ï¿½
 				calOneData();
 			}
-			else if (timeLimits==2) {//ÏÖÓĞÁ¿
+			else if (timeLimits==2) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				calNowData();
 			}
-			else if (timeLimits==3){//ÀÛ¼ÆÁ¿
+			else if (timeLimits==3){//ï¿½Û¼ï¿½ï¿½ï¿½
 				calAllData();
 			}
 			else {
-				calSumData();//ÀÛ¼Æ±ä»¯Á¿
+				calSumData();//ï¿½Û¼Æ±ä»¯ï¿½ï¿½
 			}
 		}
 		
@@ -133,21 +133,21 @@ public class CalculateData {
 			return suspected;
 		}
 		
-		/*ÏÖÓĞ±ä»¯Á¿È·Õï*/
+		/*ï¿½ï¿½ï¿½Ğ±ä»¯ï¿½ï¿½È·ï¿½ï¿½*/
 		public void calOneData() throws IOException {
-			int index=findPot(date);//´æ´¢Ö¸¶¨ÈÕÆÚÈÕÖ¾Ë÷Òı
-			int i=0;//²éÕÒÊ¡·İÊı¾İµÄË÷Òı
-			int hasData=0;//¼ìÑé¸ÃÊ¡·İÊÇ·ñÓĞÊı¾İ
-			if (index==-2||isChanged==0) {//±È×îÔçµÄÈÕÆÚ»¹Ôç»ò¸ÃÈÕÆÚÄÚÊı¾İÎŞ±ä»¯
+			int index=findPot(date);//ï¿½æ´¢Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+			int i=0;//ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ï¿½
+			int hasData=0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (index==-2||isChanged==0) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş±ä»¯
 				infected=0;
 				suspected=0;
 				cure=0;
 				dead=0;
-				isChanged=1;//»¹Ô­
+				isChanged=1;//ï¿½ï¿½Ô­
 			}
 			else {
 				readLog(index);
-				if (useCountry) {//µ±ÌìÈ«¹úÊı¾İ
+				if (useCountry) {//ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					line allCountry=calAll(all,dailycount);
 					infected=allCountry.infected;
 					suspected=allCountry.suspected;
@@ -155,7 +155,7 @@ public class CalculateData {
 					dead=allCountry.dead;
 					//System.out.print("sssss");
 				}
-				else {//µ±ÌìÄ³Ê¡·İÊı¾İ
+				else {//ï¿½ï¿½ï¿½ï¿½Ä³Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					while (i<dailycount) {
 						if (all[i].location.equals(province)) {
 							infected=all[i].infected;
@@ -172,27 +172,27 @@ public class CalculateData {
 						suspected=0;
 						cure=0;
 						dead=0;
-						hasData=1;//»¹Ô­
+						hasData=1;//ï¿½ï¿½Ô­
 					}
 				}
 			}
 		}
 		
-		/*ÀÛ¼Æ±ä»¯Á¿È·Õï*/
+		/*ï¿½Û¼Æ±ä»¯ï¿½ï¿½È·ï¿½ï¿½*/
 		public void calSumData() throws IOException {
-			int index=findPot(date);//´æ´¢Ö¸¶¨ÈÕÆÚÈÕÖ¾Ë÷Òı
-			int i=0;//²éÕÒÊ¡·İÊı¾İµÄË÷Òı
-			int hasData=0;//¼ìÑé¸ÃÊ¡·İÊÇ·ñÓĞÊı¾İ
-			if (index==-2||isChanged==0) {//±È×îÔçµÄÈÕÆÚ»¹Ôç»ò¸ÃÈÕÆÚÄÚÊı¾İÎŞ±ä»¯
+			int index=findPot(date);//ï¿½æ´¢Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+			int i=0;//ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ï¿½
+			int hasData=0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			if (index==-2||isChanged==0) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş±ä»¯
 				infected=0;
 				suspected=0;
 				cure=0;
 				dead=0;
-				isChanged=1;//»¹Ô­
+				isChanged=1;//ï¿½ï¿½Ô­
 			}
 			else {
 				readLog(index);
-				if (useCountry) {//µ±ÌìÈ«¹úÊı¾İ
+				if (useCountry) {//ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					line allCountry=calAll(changeResult,changecount);
 					//System.out.print(changecount);
 					infected=allCountry.infected;
@@ -200,7 +200,7 @@ public class CalculateData {
 					cure=allCountry.cure;
 					dead=allCountry.dead;
 				}
-				else {//µ±ÌìÄ³Ê¡·İÊı¾İ
+				else {//ï¿½ï¿½ï¿½ï¿½Ä³Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					while (i<changecount) {
 						if (changeResult[i].location.equals(province)) {
 							infected=changeResult[i].infected;
@@ -217,21 +217,21 @@ public class CalculateData {
 						suspected=0;
 						cure=0;
 						dead=0;
-						hasData=1;//»¹Ô­
+						hasData=1;//ï¿½ï¿½Ô­
 					}
 				}
 			}
 		}
 		
-		/*ÏÖÓĞÈ·Õï*/
+		/*ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½*/
 		public void calNowData() throws IOException {
-			int index=findPot(date);//´æ´¢Ö¸¶¨ÈÕÆÚÈÕÖ¾Ë÷Òı
-			int i=0;//²éÕÒÊ¡·İÊı¾İµÄË÷Òı
-			int j=0;//¿ØÖÆÇ°¼¸ÌìËùÓĞµÄÊı¾İË÷Òı
-			int hasData=0;//¼ìÑé¸ÃÊ¡·İÊÇ·ñÓĞÊı¾İ
+			int index=findPot(date);//ï¿½æ´¢Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+			int i=0;//ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ï¿½
+			int j=0;//ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			int hasData=0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			File file = new File(frompath);
-			String[] filename = file.list();//»ñÈ¡ËùÓĞÈÕÖ¾ÎÄ¼şÃû     	
-			if (index==-2) {//±È×îÔçµÄÈÕÆÚ»¹Ôç
+			String[] filename = file.list();//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½ï¿½ï¿½     	
+			if (index==-2) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½
 				infected=0;
 				suspected=0;
 				cure=0;
@@ -243,15 +243,15 @@ public class CalculateData {
 				    InputStreamReader is=new InputStreamReader(fs,"UTF-8");
 				    BufferedReader br=new BufferedReader(is);
 				    String s="";				    
-				    while ((s=br.readLine())!=null){//Ò»ĞĞÒ»ĞĞ¶Á
-				    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//ÅÅ³ı×¢ÊÍµôµÄÄÚÈİ
+				    while ((s=br.readLine())!=null){//Ò»ï¿½ï¿½Ò»ï¿½Ğ¶ï¿½
+				    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//ï¿½Å³ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				    		continue;
 				    	}
 				    	else if (s.equals("")) {
 				    		continue;
 				    	}
 				    	else {
-				    		String[] sp =s.split(" ");//·Ö¸ô¿ªµÄ×Ö·û´®
+				    		String[] sp =s.split(" ");//ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 				    		statistics(sp,result,nowcount);
 				    	}
 		    	    }
@@ -287,15 +287,15 @@ public class CalculateData {
 			}
 		}
 		
-		/*ÀÛ¼ÆÈ·Õï*/
+		/*ï¿½Û¼ï¿½È·ï¿½ï¿½*/
 		public void calAllData() throws IOException {
-			int index=findPot(date);//´æ´¢Ö¸¶¨ÈÕÆÚÈÕÖ¾Ë÷Òı
-			int i=0;//²éÕÒÊ¡·İÊı¾İµÄË÷Òı
-			int j=0;//¿ØÖÆÇ°¼¸ÌìËùÓĞµÄÊı¾İË÷Òı
-			int hasData=0;//¼ìÑé¸ÃÊ¡·İÊÇ·ñÓĞÊı¾İ
+			int index=findPot(date);//ï¿½æ´¢Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+			int i=0;//ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ï¿½
+			int j=0;//ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			int hasData=0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			File file = new File(frompath);
-			String[] filename = file.list();//»ñÈ¡ËùÓĞÈÕÖ¾ÎÄ¼şÃû     	
-			if (index==-2) {//±È×îÔçµÄÈÕÆÚ»¹Ôç
+			String[] filename = file.list();//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½ï¿½ï¿½     	
+			if (index==-2) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½
 				infected=0;
 				suspected=0;
 				cure=0;
@@ -307,15 +307,15 @@ public class CalculateData {
 				    InputStreamReader is=new InputStreamReader(fs,"UTF-8");
 				    BufferedReader br=new BufferedReader(is);
 				    String s="";				    
-				    while ((s=br.readLine())!=null){//Ò»ĞĞÒ»ĞĞ¶Á
-				    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//ÅÅ³ı×¢ÊÍµôµÄÄÚÈİ
+				    while ((s=br.readLine())!=null){//Ò»ï¿½ï¿½Ò»ï¿½Ğ¶ï¿½
+				    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//ï¿½Å³ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				    		continue;
 				    	}
 				    	else if (s.equals("")) {
 				    		continue;
 				    	}
 				    	else {
-				    		String[] sp =s.split(" ");//·Ö¸ô¿ªµÄ×Ö·û´®
+				    		String[] sp =s.split(" ");//ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 				    		allStatistics(sp,allResult,allcount);
 				    	}
 		    	    }
@@ -352,70 +352,70 @@ public class CalculateData {
 		}
 	}
 	
-	/*¼ÆËãÀÛ¼ÆÇé¿ö*/
+	/*ï¿½ï¿½ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ï¿½*/
 	static void allStatistics(String[] sp,line[] all,int count) {   	
     	String location="";    	
     	location=sp[0];
     	line line1;
-    	if (!isExistlocation(location,all,count)) {//²»´æÔÚ¶ÔÓ¦¸ÃÊ¡µÄ¼ÇÂ¼
-    		line1=new line(location,0,0,0,0);//ĞÂ½¨Êı¾İÌõ   		
+    	if (!isExistlocation(location,all,count)) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Ê¡ï¿½Ä¼ï¿½Â¼
+    		line1=new line(location,0,0,0,0);//ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   		
     		all[count]=line1;
     		count++;
     	}
     	else {
-    		line1=getLine(location,all,count);//»ñµÃÔ­ÓĞµÄÊı¾İÌõ
+    		line1=getLine(location,all,count);//ï¿½ï¿½ï¿½Ô­ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	}
-    	if (sp[1].equals("ĞÂÔö")) {
-    		if (sp[2].equals("¸ĞÈ¾»¼Õß")) {//»ñµÃ¸ĞÈ¾ÈËÊı
+    	if (sp[1].equals("ï¿½ï¿½ï¿½ï¿½")) {
+    		if (sp[2].equals("ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½")) {//ï¿½ï¿½Ã¸ï¿½È¾ï¿½ï¿½ï¿½ï¿½
     			line1.infected+=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));    			
     		}
-    		else {//ÒÉËÆ»¼Õß
+    		else {//ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½
     			line1.suspected+=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));
     		}
     	}
-    	else if (sp[1].equals("ËÀÍö")) {
+    	else if (sp[1].equals("ï¿½ï¿½ï¿½ï¿½")) {
     		line1.dead+=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
     	}
-    	else if (sp[1].equals("ÖÎÓú")) {
+    	else if (sp[1].equals("ï¿½ï¿½ï¿½ï¿½")) {
     		line1.cure+=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
     	}
-    	else if (sp[1].equals("ÒÉËÆ»¼Õß")) {
-    		if (sp[2].equals("È·Õï¸ĞÈ¾")){
-    			int change=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));//¸Ä±äÈËÊı
+    	else if (sp[1].equals("ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½")) {
+    		if (sp[2].equals("È·ï¿½ï¿½ï¿½È¾")){
+    			int change=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
     			line1.infected+=change;
     			line1.suspected-=change; 			
     		}
-    		else {//Á÷ÈëÇé¿ö
-    			String tolocation=sp[3];//Á÷ÈëÊ¡
-    			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//¸Ä±äÈËÊı
+    		else {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    			String tolocation=sp[3];//ï¿½ï¿½ï¿½ï¿½Ê¡
+    			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
     			line line2;
-    	    	if (!isExistlocation(tolocation,all,count)) {//²»´æÔÚ¶ÔÓ¦¸ÃÊ¡µÄ¼ÇÂ¼
-    	    		line2=new line(tolocation,0,0,0,0);//ĞÂ½¨Êı¾İÌõ
+    	    	if (!isExistlocation(tolocation,all,count)) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Ê¡ï¿½Ä¼ï¿½Â¼
+    	    		line2=new line(tolocation,0,0,0,0);//ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	    		all[count]=line2;
     	    		count++;
     	    	}
     	    	else {
-    	    		line2=getLine(tolocation,all,count);//»ñµÃÔ­ÓĞµÄÊı¾İÌõ
+    	    		line2=getLine(tolocation,all,count);//ï¿½ï¿½ï¿½Ô­ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	    	}
     			line1.suspected-=change;
     			line2.suspected+=change;
     		}
     	}
-    	else if (sp[1].equals("ÅÅ³ı")) {
+    	else if (sp[1].equals("ï¿½Å³ï¿½")) {
     		line1.suspected-=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));   		
     	}
-    	else {//¸ĞÈ¾»¼ÕßÁ÷ÈëÇé¿ö
-    		String tolocation=sp[3];//Á÷ÈëÊ¡
+    	else {//ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    		String tolocation=sp[3];//ï¿½ï¿½ï¿½ï¿½Ê¡
     		//System.out.print(sp[0]);
-			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//¸Ä±äÈËÊı
+			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
 			line line2;
-	    	if(!isExistlocation(tolocation,all,count)) {//²»´æÔÚ¶ÔÓ¦¸ÃÊ¡µÄ¼ÇÂ¼
-	    		line2=new line(tolocation,0,0,0,0);//ĞÂ½¨Êı¾İÌõ
+	    	if(!isExistlocation(tolocation,all,count)) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Ê¡ï¿½Ä¼ï¿½Â¼
+	    		line2=new line(tolocation,0,0,0,0);//ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    		all[count]=line2;
 	    		count++;
 	    	}
 	    	else {
-	    		line2=getLine(tolocation,all,count);//»ñµÃÔ­ÓĞµÄÊı¾İÌõ
+	    		line2=getLine(tolocation,all,count);//ï¿½ï¿½ï¿½Ô­ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    	}
 			line2.infected+=change;   		
     	}
@@ -423,27 +423,27 @@ public class CalculateData {
 		changecount=count;
     }
 	
-	/*¶ÁÈ¡Ö¸¶¨ÈÕÆÚµÄµ±ÌìµÄÊı¾İ±ä»¯Çé¿ö*/
+	/*ï¿½ï¿½È¡Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ±ä»¯ï¿½ï¿½ï¿½*/
 	public static void readLog(int index) throws IOException {	
 		File file = new File(frompath);
-		String[] filename = file.list();//»ñÈ¡ËùÓĞÈÕÖ¾ÎÄ¼şÃû     	
+		String[] filename = file.list();//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½ï¿½ï¿½     	
 		FileInputStream fs=new FileInputStream(frompath+filename[index]);
 	    InputStreamReader is=new InputStreamReader(fs,"UTF-8");
 	    BufferedReader br=new BufferedReader(is);
 	    String s="";				    
-	    while((s=br.readLine())!=null){//Ò»ĞĞÒ»ĞĞ¶Á
-	    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//ÅÅ³ı×¢ÊÍµôµÄÄÚÈİ
+	    while((s=br.readLine())!=null){//Ò»ï¿½ï¿½Ò»ï¿½Ğ¶ï¿½
+	    	if (s.length()!=0&&s.charAt(0)=='/'&&s.charAt(1)=='/') {//ï¿½Å³ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    		continue;
 	    	}
-	    	else if (s.equals("")) {//Ìø¹ı¿ÕĞĞ
+	    	else if (s.equals("")) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    		continue;
 	    	}
 	    	else {
-	    		String[] sp =s.split(" ");//·Ö¸ô¿ªµÄ×Ö·û´®
-	    		if (timeLimits==4) {//ÀÛ¼Æ±ä»¯Á¿
+	    		String[] sp =s.split(" ");//ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	    		if (timeLimits==4) {//ï¿½Û¼Æ±ä»¯ï¿½ï¿½
 	    			allStatistics(sp,changeResult,changecount);
 	    		}
-	    		else {//µ±Ìì±ä»¯Á¿
+	    		else {//ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½
 	    			statistics(sp,all,dailycount);
 	    		}	    		
 	    	}
@@ -451,94 +451,94 @@ public class CalculateData {
 	    br.close();
 	}
 	
-	/*¼ÆËãÈ«¹úÒßÇéÇé¿ö*/
+	/*ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	static line calAll(line[] all,int num) {
-    	int sumg=0;//È«¹ú¸ĞÈ¾»¼Õß×ÜÊı
-        int sumy=0;//È«¹úÒÉËÆ»¼Õß×ÜÊı
-        int sumd=0;//È«¹úËÀÍöÈËÊı
-        int sumr=0;//È«¹úÖÎÓúÈËÊı
+    	int sumg=0;//È«ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        int sumy=0;//È«ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        int sumd=0;//È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        int sumr=0;//È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         for(int i=0;i<num;i++) {
         	sumg+=all[i].infected;
         	sumy+=all[i].suspected;
         	sumd+=all[i].dead;
         	sumr+=all[i].cure;
         }
-        return new line("È«¹ú",sumg,sumy,sumr,sumd);
+        return new line("È«ï¿½ï¿½",sumg,sumy,sumr,sumd);
     }
 	
-	/*Í³¼Æº¯Êı£¬¹éÀàÍ¬Ê¡·İĞÅÏ¢*/
+	/*Í³ï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ê¡ï¿½ï¿½ï¿½ï¿½Ï¢*/
 	static void statistics(String[] sp,line[] all,int count) {   	
     	//System.out.println("111");
     	String location="";    	
     	location=sp[0];
     	line line1;
-    	if (!isExistlocation(location,all,count)) {//²»´æÔÚ¶ÔÓ¦¸ÃÊ¡µÄ¼ÇÂ¼
-    		line1=new line(location,0,0,0,0);//ĞÂ½¨Êı¾İÌõ   		
+    	if (!isExistlocation(location,all,count)) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Ê¡ï¿½Ä¼ï¿½Â¼
+    		line1=new line(location,0,0,0,0);//ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   		
     		all[count]=line1;
     		count++;
     	}
     	else {
-    		line1=getLine(location,all,count);//»ñµÃÔ­ÓĞµÄÊı¾İÌõ
+    		line1=getLine(location,all,count);//ï¿½ï¿½ï¿½Ô­ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	}
-    	if (sp[1].equals("ĞÂÔö")) {
-    		if (sp[2].equals("¸ĞÈ¾»¼Õß")) {//»ñµÃ¸ĞÈ¾ÈËÊı
+    	if (sp[1].equals("ï¿½ï¿½ï¿½ï¿½")) {
+    		if (sp[2].equals("ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½")) {//ï¿½ï¿½Ã¸ï¿½È¾ï¿½ï¿½ï¿½ï¿½
     			line1.infected+=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));
     			
     		}
-    		else {//ÒÉËÆ»¼Õß
+    		else {//ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½
     			line1.suspected+=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));
     		}
     	}
-    	else if (sp[1].equals("ËÀÍö")) {
+    	else if (sp[1].equals("ï¿½ï¿½ï¿½ï¿½")) {
     		line1.dead+=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
     		line1.infected-=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
     	}
-    	else if (sp[1].equals("ÖÎÓú")) {
+    	else if (sp[1].equals("ï¿½ï¿½ï¿½ï¿½")) {
     		line1.cure+=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
     		line1.infected-=Integer.valueOf(sp[2].substring(0,sp[2].length()-1));
     	}
-    	else if (sp[1].equals("ÒÉËÆ»¼Õß")) {
-    		if (sp[2].equals("È·Õï¸ĞÈ¾")){
-    			int change=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));//¸Ä±äÈËÊı
+    	else if (sp[1].equals("ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½")) {
+    		if (sp[2].equals("È·ï¿½ï¿½ï¿½È¾")){
+    			int change=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
     			line1.infected+=change;
     			line1.suspected-=change; 			
     		}
-    		else {//Á÷ÈëÇé¿ö
-    			String tolocation=sp[3];//Á÷ÈëÊ¡
-    			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//¸Ä±äÈËÊı
+    		else {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    			String tolocation=sp[3];//ï¿½ï¿½ï¿½ï¿½Ê¡
+    			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
     			line line2;
-    	    	if (!isExistlocation(tolocation,all,count)) {//²»´æÔÚ¶ÔÓ¦¸ÃÊ¡µÄ¼ÇÂ¼
-    	    		line2=new line(tolocation,0,0,0,0);//ĞÂ½¨Êı¾İÌõ
+    	    	if (!isExistlocation(tolocation,all,count)) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Ê¡ï¿½Ä¼ï¿½Â¼
+    	    		line2=new line(tolocation,0,0,0,0);//ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	    		all[count]=line2;
     	    		count++;
     	    	}
     	    	else {
-    	    		line2=getLine(tolocation,all,count);//»ñµÃÔ­ÓĞµÄÊı¾İÌõ
+    	    		line2=getLine(tolocation,all,count);//ï¿½ï¿½ï¿½Ô­ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     	    	}
     			line1.suspected-=change;
     			line2.suspected+=change;
     		}
     	}
-    	else if (sp[1].equals("ÅÅ³ı")) {
+    	else if (sp[1].equals("ï¿½Å³ï¿½")) {
     		line1.suspected-=Integer.valueOf(sp[3].substring(0,sp[3].length()-1));   		
     	}
-    	else {//¸ĞÈ¾»¼ÕßÁ÷ÈëÇé¿ö
-    		String tolocation=sp[3];//Á÷ÈëÊ¡
+    	else {//ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    		String tolocation=sp[3];//ï¿½ï¿½ï¿½ï¿½Ê¡
     		//System.out.print(sp[0]);
-			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//¸Ä±äÈËÊı
+			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
 			line line2;
-	    	if(!isExistlocation(tolocation,all,count)) {//²»´æÔÚ¶ÔÓ¦¸ÃÊ¡µÄ¼ÇÂ¼
-	    		line2=new line(tolocation,0,0,0,0);//ĞÂ½¨Êı¾İÌõ
+	    	if(!isExistlocation(tolocation,all,count)) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Ó¦ï¿½ï¿½Ê¡ï¿½Ä¼ï¿½Â¼
+	    		line2=new line(tolocation,0,0,0,0);//ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    		all[count]=line2;
 	    		count++;
 	    	}
 	    	else {
-	    		line2=getLine(tolocation,all,count);//»ñµÃÔ­ÓĞµÄÊı¾İÌõ
+	    		line2=getLine(tolocation,all,count);//ï¿½ï¿½ï¿½Ô­ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	    	}
 			line1.infected-=change;
 			line2.infected+=change;   		
     	}
-    	if (timeLimits==1) {//µ±Ìì
+    	if (timeLimits==1) {//ï¿½ï¿½ï¿½ï¿½
     		dailycount=count;
     	}
     	else {
@@ -555,7 +555,7 @@ public class CalculateData {
     	}
     }
 	
-	/*ÕÒ³öÖ¸¶¨µØÖ·ÊÇ·ñÒÑ¾­´æÔÚ¼ÇÂ¼*/
+	/*ï¿½Ò³ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½Â¼*/
 	static boolean isExistlocation(String location,line[] all,int count) {
     	for(int i=0;i<count;i++) {
     		if (location.equals(all[i].location)) {
@@ -565,27 +565,27 @@ public class CalculateData {
     	return false;    	
     }
 	
-	/*ÕÒ³öÖ¸¶¨µØÖ·µÄ¼ÇÂ¼*/
+	/*ï¿½Ò³ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ä¼ï¿½Â¼*/
 	static line getLine(String location,line[] all,int count) {
     	for(int i=0;i<count;i++) {
     		if (location.equals(all[i].location)) {
     			return all[i];
     		}
     	}
-    	return null;//²»»áÓÃµ½
+    	return null;//ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½
     }
 	
-	/*ÕÒ³öÈÕÆÚËùÔÚËùÓĞÈÕÖ¾µÄË÷Òı*/
+	/*ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	static int findPot(String date) {
     	File file = new File(frompath);
-        String[] filename = file.list();//»ñÈ¡ËùÓĞÈÕÖ¾ÎÄ¼şÃû      
-        int mid=-1;//ÖĞ¼ä´æ´¢±äÁ¿£¬Ôİ´æ·µ»ØÖµ
-        if (isBefore(date,filename[0].substring(0,10))) {//ÊäÈëÈÕÆÚ±ÈÈÕÖ¾×îÔç»¹Ôç
+        String[] filename = file.list();//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½ï¿½ï¿½      
+        int mid=-1;//ï¿½Ğ¼ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ´æ·µï¿½ï¿½Öµ
+        if (isBefore(date,filename[0].substring(0,10))) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ç»¹ï¿½ï¿½
         	return -2;
         }
     	for(int i=0;i<filename.length-1;i++) {
-    		String datecut1=filename[i].substring(0,10);//Ö»»ñÈ¡ÎÄ¼şÃûÇ°µÄÈÕÆÚ
-    		String datecut2=filename[i+1].substring(0,10);//Ç°ºóÁ½¸öÈÕÆÚ
+    		String datecut1=filename[i].substring(0,10);//Ö»ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    		String datecut2=filename[i+1].substring(0,10);//Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     		if (date.equals(datecut1)) {   	   			
     			mid=i;
     			return mid;
@@ -594,9 +594,9 @@ public class CalculateData {
     			mid=i+1;
     			return mid;
     		}
-    		else if (isBefore(datecut1,date)&&isBefore(date,datecut2)) {//Ëù¸øÈÕÆÚÔÚÁ½ÌìÓĞ¼ÇÂ¼µÄÈÕÖ¾Ö®¼ä
+    		else if (isBefore(datecut1,date)&&isBefore(date,datecut2)) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ö¾Ö®ï¿½ï¿½
     			mid=i;
-    			isChanged=0;//±ê¼ÇÊÇ·ñÓĞ±ä»¯
+    			isChanged=0;//ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ğ±ä»¯
     			return mid;
     		}   		
     	}    	
