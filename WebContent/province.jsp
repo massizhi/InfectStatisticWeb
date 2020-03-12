@@ -12,13 +12,15 @@
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="line1" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
+    	var province = window.localStorage.getItem("selectedProvince");
+    	//document.write(window.localStorage.getItem("selectedProvince"));
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('line1'));
 
         // 指定图表的配置项和数据
         var option = {
        	    title: {
-       	        text: '湖北 新增确诊趋势',
+       	        text: province+" 新增确诊趋势",
        	        subtext: '单位：例'
        	    },
        	    tooltip: {
@@ -53,13 +55,14 @@
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="line2" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
+    	var province = window.localStorage.getItem("selectedProvince");
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('line2'));
 
         // 指定图表的配置项和数据
         var option = {
        	    title: {
-       	        text: '湖北 累计确诊趋势',
+       	    	text: province+' 累计确诊趋势',
        	        subtext: '单位：例'
        	    },
        	    tooltip: {
@@ -94,13 +97,14 @@
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="line3" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
+    	var province = window.localStorage.getItem("selectedProvince");
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('line3'));
 
         // 指定图表的配置项和数据
         var option = {
        	    title: {
-       	        text: '湖北 累计治愈/死亡趋势',
+       	    	text: province+' 累计治愈/死亡趋势',
        	        subtext: '单位：例'
        	    },
        	    tooltip: {

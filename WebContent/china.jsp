@@ -88,9 +88,12 @@
         ]
     };
     myChart.setOption(option);
-    myChart.on('mouseover', function (params) {
+    myChart.on('click', function (params) {
         var dataIndex = params.dataIndex;
-        console.log(params);
+        //console.log(params);
+        //window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+        window.localStorage.setItem("selectedProvince", params.name);
+        window.open('province.jsp');
     });
 	</script>
 	
