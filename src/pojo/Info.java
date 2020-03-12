@@ -1,4 +1,5 @@
 package pojo;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 //2020-01-29 1 2 ip
-public class statistic {
+public class Info {
 	static int dailycount=0;//当天所有变化数据的条数
 	static int nowcount=0;//现有数据条数
 	static int allcount=0;//累计数据条数
