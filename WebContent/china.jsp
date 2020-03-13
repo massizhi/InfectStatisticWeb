@@ -11,11 +11,40 @@
 <title>china</title>
 </head>
 <body>
-<%
-	//out.println(request.getAttribute("haha"));
-	//未选择时间时，输出信息如下。
-	if (request.getAttribute("info")==null) {
+	<%--显示疫情数据信息 --%>
+	<%
+		//out.println(request.getAttribute("haha"));
+		//未选择时间时，输出信息如下。
+		if (request.getAttribute("info")==null) {
+		%>
+		<table>
+			<tr>
+			<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
+			</tr>
+			<tr>
+			<td><%="13904" %></td><td><%="1724" %></td><td><%="---" %></td>
+			</tr>
+			<tr>
+			<td><%="昨日+2461" %></td><td><%="昨日+277" %></td><td><%="昨日---" %></td>
+			</tr>
+			
+			<tr>
+			<td><%="累计确诊" %></td><td><%="累计治愈" %></td><td><%="累计死亡" %></td>
+			</tr>
+			<tr>
+			<td><%="14503" %></td><td><%="295" %></td><td><%="304" %></td>
+			</tr>
+			<tr>
+			<td><%="昨日+2586" %></td><td><%="昨日+80" %></td><td><%="昨日+45" %></td>
+			</tr>
+		</table>
+		<%}
+		else {
+			
+		%>		
+		<%} 	
 	%>
+<<<<<<< Updated upstream
 	<table>
 		<tr>
 		<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
@@ -43,6 +72,10 @@
 	%>		
 	<%} 
 %>
+=======
+	
+	<%--显示疫情图像信息 --%>
+>>>>>>> Stashed changes
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="china1" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
