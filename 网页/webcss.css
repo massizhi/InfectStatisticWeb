@@ -155,7 +155,8 @@ a:visited{
     left: 330px;
     top:4075px;
 }
-#button1:hover,#button2:hover,#button3:hover,#button4:hover,#button5:hover,#button6:hover,#button7:hover{
+#button1:hover,#button2:hover,#button3:hover,#button4:hover,#button5:hover,#button6:hover,#button7:hover,
+.button8:hover,.button9:hover,.button10:hover{
     background-image: url(gbg1.png);
 }
 #button4{
@@ -285,8 +286,10 @@ em{
 }
 .totop{
     height: 50px;
-    width: 80px;
-    background-color: red;
+    width: 100px;
+    background-image: url(gbg1.png);
+    background-size:100px 50px;
+    background-repeat: no-repeat;  
     text-align: center;
     position:absolute;
     left: 850px;
@@ -325,7 +328,7 @@ em{
     margin: 20px;
     margin-left: 80px;
 }
-#donatemask{
+.donatemask{
     width: 600px;
     height:380px;
     margin: 0 auto;
@@ -335,17 +338,19 @@ em{
     background-repeat: no-repeat;    
     padding-top: 30px;
 }
-#donatemask p{
+.donatemask p{
     margin: 20px;
     margin-left: 80px;
 }
 #slogan{
     width: 800px;
     height: 60px;
-    background-color: rgb(238, 123, 148);
+    background-image: url(gbg1.png);
+    background-size: 800px 60px;
+    background-repeat: no-repeat;  
     margin: 0 auto;
     text-align: center;
-    margin-top: 1px;
+    margin-top: 5px;
 }
 #slogan h3{
     margin-top: -5px;
@@ -358,32 +363,66 @@ em{
     width: 600px;
     height: 100px;
     margin: 0 auto;
-  
+}
+#container4{
+    width: 600px;
+    height: 100px;
+    margin: 0 auto;
+}
+.sell{
+    width: 700px;
+    height: 370px;
+    margin: 0 auto;
+    background-image: url(gbg.png);
+    background-size:700px 370px;
+    background-repeat: no-repeat;  
+    text-align: center;
+    margin-top: -25px;  
+    padding-top: 100px;
+    padding-left: 70px;
+}
+.sell h3{
+    text-align: center;
+    position: absolute;
+    left: 550px;
+    top:5770px;
+}
+.sell p{
+    text-align: center;
+    position: absolute;
+    left: 568px;
+    top:6000px;
 }
 .button8{
     width: 160px;
     text-align: center;
-    background-color: #8ED2EF;
+    background-image: url(gbg.png);
+    background-size:160px 40px;
+    background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
 }
 .button9{
     width: 160px;
     text-align: center;
-    background-color: #8ED2EF;
+    background-image: url(gbg.png);
+    background-size:160px 40px;
+    background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 555px;
-    top:9075px;
+    top:5645px;
 }
 .button10{
     width: 160px;
     text-align: center;
-    background-color: #8ED2EF;
+    background-image: url(gbg.png);
+    background-size:160px 40px;
+    background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 770px;
-    top:4075px;
+    top:5645px;
 }

@@ -119,6 +119,7 @@
        <p style="font-size: smaller;">02月25日  20:30</p>
        <h4><a href="http://baijiahao.baidu.com/s?id=1659502777910018693" target="_blank">中方是否会对日韩采取禁止人员入境等措施？外交部回应</a></h4>      
    </div>
+   <p class="totop"><br /><a href="#nav">回到顶部</a></p>
    <h2 class="title">谣言粉碎</h2>
    <div id="incorrect">
        <br />
@@ -141,11 +142,10 @@
    <h2 class="title">其他功能</h2>
    <div id="function">
    <a href="#save"><img src="120.png" style="width: 150px ;height: 150px; " /></a><a href="https://www.weibo.com/" target="_blank"><img src="weibo.png" style="width: 150px ;height: 150px;" /></a><a href="https://hao.360.com/?h_lnk" target="_blank"><img src="浏览.png" style="width: 150px ;height: 150px; " /></a>
-   <a href="#nav"><img src="gouwu.png" style="width: 150px ;height: 150px;" /></a><a href="#report"><img src="jub.png" style="width: 150px ;height: 150px;" /></a><a href="#donate"><img src="aixin.png" style="width: 150px ;height: 150px; " /></a>
+   <a href="#container4"><img src="gouwu.png" style="width: 150px ;height: 150px;" /></a><a href="#report"><img src="jub.png" style="width: 150px ;height: 150px;" /></a><a href="#container2"><img src="aixin.png" style="width: 150px ;height: 150px; " /></a>
    </div>
    <h2 class="title" id="save">救护</h2>
-   <div id="container3">
-       
+   <div id="container3">      
         <p id="button1"><a href="#">拨打120</a></p>
         <p id="button2"><a href="map.html" target="_blank">查找附近医院</a></p>
         <p id="button3"><a href="#">查找附近病患</a></p>
@@ -156,6 +156,9 @@
             <p>举报人姓名：<input type="text" name="reporter" /><br /><br />
             被举报者状态：<select id="status">
                 <option value="sp">疑似患者</option>
+                <option value="highprice">高价出售口罩</option>
+                <option value="fake">售卖假口罩</option>
+                <option value="high">生活用品高价</option>
                 <option value="hubei">从湖北回来</option>
                 <option value="other">其他</option>
             </select><br /><br />
@@ -171,9 +174,9 @@
         <p id="button4"><a href="#donatemask">捐赠口罩</a></p>
         <p id="button5"><a href="#">捐献现金</a></p>
         <p id="button6"><a href="#">捐赠物资</a></p>
-        <p id="button7"><a href="#">志愿者</a></p>
+        <p id="button7"><a href="#volunteer">志愿者</a></p>
     </div>
-    <div id="donatemask">
+    <div class="donatemask">
         <form action="" method="get" id="subdonate">
             <p>捐赠人姓名：<input type="text" name="reporter" /><br /><br />
             捐赠口罩种类：<select id="type">
@@ -190,11 +193,76 @@
             </p><input type="submit" value="提交" style="margin-left: 270px;"/>
         </form>
    </div>
+   <div class="donatemask" id="volunteer">
+    <form action="" method="get" id="subdonate">
+        <p>申请人姓名：<input type="text" name="reporter" /><br /><br />
+        家庭住址：<textarea rows="4" cols="20" style="vertical-align:top"></textarea><br /><br />
+        申请人电话：<input type="text" name="tel" /><br /><br />
+        特长/志愿方向：<textarea rows="4" cols="20" style="vertical-align:top"></textarea><br /><br />
+        </p><input type="submit" value="提交" style="margin-left: 270px;"/>
+    </form>
+   </div>
    <h2 class="title">购物</h2>
-   <!--<div id="container3">
-   <p class="button8" style="background-color:palevioletred;"><a href="#donatemask">口罩</a></p>
-    <p class="button9"><a href="#">超市</a></p>
-    <p class="button10"><a href="#">消毒物品</a></p>
-</div>-->
+   <div id="container4">
+        <p class="button8"><a href="#donatemask">口罩</a></p>
+        <p class="button9"><a href="#">超市</a></p>
+        <p class="button10"><a href="#">消毒物品</a></p>
+    </div>
+    <div class="sell">
+        <h3>口罩到货药店</h3>
+        <table border="1" cellspacing="0">
+            <tr>
+                <th>药店名</th>
+                <th>地理位置</th>
+                <th>到货口罩型号</th>
+                <th>到货口罩数量</th>
+                <th>口罩价格（元/只）</th>
+            </tr>
+            <tr>
+                <td>众友药店</td>
+                <td>鼓楼区XX街道XX号</td>
+                <td>N95</td>
+                <td>100</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>一心堂</td>
+                <td>闽侯县XX街道XX号</td>
+                <td>N95</td>
+                <td>390</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>同仁堂</td>
+                <td>晋安区XX街道XX号</td>
+                <td>普通医用口罩</td>
+                <td>300</td>
+                <td>20</td>
+                </tr>
+            <tr>
+                <td>老百姓大药房</td>
+                <td>台江区XX街道XX号</td>
+                <td>普通医用口罩</td>
+                <td>500</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>益丰大药房</td>
+                <td>仓山区XX街道XX号</td>
+                <td>N95</td>
+                <td>420</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.baidu.com/s?tn=news&rtt=1&bsst=1&wd=%E8%8D%AF%E5%BA%97%E5%94%AE%E5%8D%96%E5%8F%A3%E7%BD%A9&cl=2&origin=ps" target="_blank">...</a></td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            </table>
+            <p><a href="https://www.baidu.com/s?tn=news&rtt=1&bsst=1&wd=%E8%8D%AF%E5%BA%97%E5%94%AE%E5%8D%96%E5%8F%A3%E7%BD%A9&cl=2&origin=ps" target="_blank">查看更多</a></p>
+    </div>
+    <p class="totop"><br /><a href="#nav">回到顶部</a></p>
 </body>
 </html>
