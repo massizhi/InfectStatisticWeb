@@ -9,6 +9,20 @@
 <title>province</title>
 </head>
 <body>
+	<%--显示疫情数据信息 --%>
+	<table>
+		<tr>
+		<td><%="现有确诊" %></td><td><%="累计确诊" %></td><td><%="累计治愈" %></td><td><%="累计死亡" %></td>
+		</tr>
+		<tr>
+		<td><%="" %></td><td><%="" %></td><td><%="" %></td><td><%="" %></td>
+		</tr>
+		<tr>
+		<td><%="昨日" %></td><td><%="昨日" %></td><td><%="昨日" %></td><td><%="昨日" %></td>
+		</tr>		
+	</table>
+	
+	<%--显示疫情图像信息 --%>
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="line1" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">

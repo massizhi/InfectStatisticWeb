@@ -8,9 +8,36 @@
 <!-- 引入 ECharts 文件 -->
 <script src="echarts.min.js"></script>
 <script src="china.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>china</title>
 </head>
 <body>
+<%=request.getAttribute("info") %>
+	<!--选择日期 -->
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="btn-group">
+				<button class="btn btn-default">请选择日期</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-01">2020-02-01</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-31">2020-01-31</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-30">2020-01-30</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-29">2020-01-29</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-28">2020-01-28</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-27">2020-01-27</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-26">2020-01-26</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-25">2020-01-25</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-24">2020-01-24</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-23">2020-01-23</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-22">2020-01-22</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-21">2020-01-21</a></li>
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-20">2020-01-20</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<%--显示疫情数据信息 --%>
 	<%
 		//out.println(request.getAttribute("haha"));
@@ -40,42 +67,33 @@
 		</table>
 		<%}
 		else {
+		%>	
+		<table>
+			<tr>
+			<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
+			</tr>
+			<tr>
+			<td><%="" %></td><td><%="" %></td><td><%="---" %></td>
+			</tr>
+			<tr>
+			<td><%="昨日" %></td><td><%="昨日" %></td><td><%="昨日---" %></td>
+			</tr>
 			
-		%>		
+			<tr>
+			<td><%="累计确诊" %></td><td><%="累计治愈" %></td><td><%="累计死亡" %></td>
+			</tr>
+			<tr>
+			<td><%="" %></td><td><%="" %></td><td><%="" %></td>
+			</tr>
+			<tr>
+			<td><%="昨日" %></td><td><%="昨日" %></td><td><%="昨日" %></td>
+			</tr>
+		</table>	
 		<%} 	
 	%>
-<<<<<<< Updated upstream
-	<table>
-		<tr>
-		<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
-		</tr>
-		<tr>
-		<td><%="13904" %></td><td><%="1724" %></td><td><%="---" %></td>
-		</tr>
-		<tr>
-		<td><%="昨日+2461" %></td><td><%="昨日+277" %></td><td><%="昨日---" %></td>
-		</tr>
-		
-		<tr>
-		<td><%="累计确诊" %></td><td><%="累计治愈" %></td><td><%="累计死亡" %></td>
-		</tr>
-		<tr>
-		<td><%="14503" %></td><td><%="295" %></td><td><%="304" %></td>
-		</tr>
-		<tr>
-		<td><%="昨日+2586" %></td><td><%="昨日+80" %></td><td><%="昨日+45" %></td>
-		</tr>
-	</table>
-	<%}
-	else {
-		
-	%>		
-	<%} 
-%>
-=======
 	
 	<%--显示疫情图像信息 --%>
->>>>>>> Stashed changes
+	<%--当前现有确诊病例数图像信息 --%>
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="china1" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
@@ -163,6 +181,7 @@
     });
 	</script>
 	
+	<%--累计确诊病例数图像信息 --%>
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="china2" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
@@ -247,11 +266,12 @@
     });
 	</script>
 	
+	<!-- 全国新增确诊病例趋势图 -->
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="line" style="width: 600px;height:400px;"></div>
+    <div id="line1" style="width: 600px;height:400px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('line'));
+        var myChart = echarts.init(document.getElementById('line1'));
 
         // 指定图表的配置项和数据
         var option = {
@@ -278,7 +298,49 @@
        	    },
        	    series: [
        	        {
-       	            name: '新增确诊：',
+       	            name: '新增确诊',
+       	            type: 'line',
+       	            smooth: true,
+       	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
+       	        }
+       	    ]
+       	};
+        myChart.setOption(option);
+	</script>
+	
+	<!-- 全国累计确诊病例趋势图 -->
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="line2" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('line2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+       	    title: {
+       	        text: '全国累计确诊病例',
+       	        subtext: '单位：例'
+       	    },
+       	    tooltip: {
+       	        trigger: 'axis'
+       	    },
+       	    xAxis: {
+       	        type: 'category',
+       	        boundaryGap: false,
+       	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+       	    },
+       	    yAxis: {
+       	        type: 'value',
+       	        axisLabel: {
+       	            formatter: '{value}'
+       	        },
+       	        axisPointer: {
+       	            snap: true
+       	        }
+       	    },
+       	    series: [
+       	        {
+       	            name: '累计确诊',
        	            type: 'line',
        	            smooth: true,
        	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
