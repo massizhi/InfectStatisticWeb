@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-//2020-01-29 1 2 ip
+//2020-02-02 1 2 ip
 public class Info {
 	static int dailycount=0;//当天所有变化数据的条数
 	static int nowcount=0;//现有数据条数
