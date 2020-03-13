@@ -5,24 +5,25 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class GetInfo {
-	static int dailycount=0;//当天所有变化数据的条数
-	static int nowcount=0;//现有数据条数
-	static int allcount=0;//累计数据条数
-	static int changecount=0;//累计变化数据的条数
-	static line[] all=new line[34];//初始化结果，当天变化结果
-	static line[] result=new line[34];//总的排序后结果，当天结果
-	static line[] allResult=new line[34];//总的排序后结果，累计结果
-	static line[] changeResult=new line[34];//累计变化结果
-    static String topath="D:\\test.txt";//输出文档路径
-    static String frompath="log\\";//log文件路径
-    static int index=0;//控制是否输入日期比日志最早一天还早，若是则值为-2
-    static int isChanged=1;//指定日期相比前几天的数据有所变化
-    static int timeLimits;//获取累计数据值为1，当天数据值为2
-    public static int resultInfo=0;//得到输出结果信息
+	int dailycount=0;//当天所有变化数据的条数
+	int nowcount=0;//现有数据条数
+	int allcount=0;//累计数据条数
+	int changecount=0;//累计变化数据的条数
+	line[] all=new line[34];//初始化结果，当天变化结果
+	line[] result=new line[34];//总的排序后结果，当天结果
+	line[] allResult=new line[34];//总的排序后结果，累计结果
+	line[] changeResult=new line[34];//累计变化结果
+    String topath="D:\\test.txt";//输出文档路径
+    String frompath="\\log\\";//log文件路径
+    int index=0;//控制是否输入日期比日志最早一天还早，若是则值为-2
+    int isWrong=0;//输入日期是否出错（输入日期比最新的日志还晚）
+    int isChanged=1;//指定日期相比前几天的数据有所变化
+    int timeLimits;//获取累计数据值为1，当天数据值为2
     
-    public static void main(String[] args) throws IOException {
+    public int getInfo(String[] args) throws IOException {
 		//System.out.print("输入查找日期、数据范围(全国数据输入1，省份数据输入2)、省份名（若前一项选择2则需输入）、");
 		//System.out.println("数据类型（现存变化量输入1，现有输入2，累计输入3，累计变化量输入4）、感染信息（ip,sp,cure,dead）");
 		String province="";
@@ -42,35 +43,48 @@ public class GetInfo {
         	timeLimits=Integer.parseInt(args[3]);
         	type=args[4];//获得需要的感染类型
         }
-        CalData dailyData=new CalData(date, boundary, province,timeLimits);     
-        getData(type,dailyData);     
+        CalData dailyData=new CalData(date, boundary, province,timeLimits);      
+        return getData(type,dailyData);
 	}
     
-    static void getData(String type,CalData data) {
+    public void main(String[] args) {
+		System.out.print("输入查找日期、数据范围(全国数据输入1，省份数据输入2)、省份名（若前一项选择2则需输入）、");
+		System.out.println("数据类型（现存变化量输入1，现有输入2，累计输入3，累计变化量输入4）、感染信息（ip,sp,cure,dead）");
+		Scanner in=new Scanner(System.in);
+		String province="";
+        String date=in.next();//输入字符串
+        int boundary=Integer.parseInt(in.next());
+        if(boundary==2) {
+        	province=in.next();
+        }
+        timeLimits=in.nextInt();
+        String type=in.next();//获得需要的感染类型       
+		try {
+			CalData dailyData;
+			dailyData = new CalData(date, boundary, province,timeLimits);
+			getData(type,dailyData);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}           
+        in.close();       
+	}
+    
+    int getData(String type,CalData data) {
     	switch (type) {
 		case "ip":
-			resultInfo=data.getInfect();
-			break;
+			return data.getInfect();
 		case "sp":
-			resultInfo=data.getSup();
-			break;
+			return data.getSup();
 		case "cure":
-			resultInfo=data.getCure();
-			break;
+			return data.getCure();
 		case "dead":
-			resultInfo=data.getDead();
-			break;
+			return data.getDead();
 		default:
-			System.out.println("感染类型输入有误！");
-			break;
+			return 0;
 		}
     }
     
-    static void clearResultInfo() {
-		resultInfo=0;
-    }
-    
-    static class line{//统计之后的病例每条的结构
+    class line{//统计之后的病例每条的结构
 		String location;//地理位置
 		int infected;//感染患者人数
 		int suspected;//疑似患者人数
@@ -92,7 +106,7 @@ public class GetInfo {
 		}		
 	}
     
-	static public class CalData {//今日或累计的数据统计
+	public class CalData {//今日或累计的数据统计
 		private int infected;
 		private int cure;
 		private int dead;
@@ -362,7 +376,7 @@ public class GetInfo {
 	}
 	
 	/*计算累计情况*/
-	static void allStatistics(String[] sp,line[] all,int count) {   	
+	void allStatistics(String[] sp,line[] all,int count) {   	
     	String location="";    	
     	location=sp[0];
     	line line1;
@@ -433,7 +447,7 @@ public class GetInfo {
     }
 	
 	/*读取指定日期的当天的数据变化情况*/
-	public static void readLog(int index) throws IOException {	
+	public void readLog(int index) throws IOException {	
 		File file = new File(frompath);
 		String[] filename = file.list();//获取所有日志文件名     	
 		FileInputStream fs=new FileInputStream(frompath+filename[index]);
@@ -461,7 +475,7 @@ public class GetInfo {
 	}
 	
 	/*计算全国疫情情况*/
-	static line calAll(line[] all,int num) {
+	line calAll(line[] all,int num) {
     	int sumg=0;//全国感染患者总数
         int sumy=0;//全国疑似患者总数
         int sumd=0;//全国死亡人数
@@ -476,7 +490,7 @@ public class GetInfo {
     }
 	
 	/*统计函数，归类同省份信息*/
-	static void statistics(String[] sp,line[] all,int count) {   	
+	void statistics(String[] sp,line[] all,int count) {   	
     	//System.out.println("111");
     	String location="";    	
     	location=sp[0];
@@ -533,7 +547,7 @@ public class GetInfo {
     	}
     	else {//感染患者流入情况
     		String tolocation=sp[3];//流入省
-    		//System.out.print("运行到这\n");
+    		//System.out.print(sp[0]);
 			int change=Integer.valueOf(sp[4].substring(0,sp[4].length()-1));//改变人数
 			line line2;
 	    	if(!isExistlocation(tolocation,all,count)) {//不存在对应该省的记录
@@ -555,7 +569,7 @@ public class GetInfo {
 		}
     }
 	
-	static boolean isBefore(String date1,String date2) {
+	boolean isBefore(String date1,String date2) {
     	if (date1.compareTo(date2)>=0) {
     		return false;
     	}
@@ -565,7 +579,7 @@ public class GetInfo {
     }
 	
 	/*找出指定地址是否已经存在记录*/
-	static boolean isExistlocation(String location,line[] all,int count) {
+	boolean isExistlocation(String location,line[] all,int count) {
     	for(int i=0;i<count;i++) {
     		if (location.equals(all[i].location)) {
     			return true;
@@ -575,7 +589,7 @@ public class GetInfo {
     }
 	
 	/*找出指定地址的记录*/
-	static line getLine(String location,line[] all,int count) {
+	line getLine(String location,line[] all,int count) {
     	for(int i=0;i<count;i++) {
     		if (location.equals(all[i].location)) {
     			return all[i];
@@ -585,13 +599,16 @@ public class GetInfo {
     }
 	
 	/*找出日期所在所有日志的索引*/
-	static int findPot(String date) {
+	int findPot(String date) {
     	File file = new File(frompath);
         String[] filename = file.list();//获取所有日志文件名      
-        int mid=-1;//中间存储变量，暂存返回值       
+        int mid=-1;//中间存储变量，暂存返回值
+        if (isBefore(date,filename[0].substring(0,10))) {//输入日期比日志最早还早
+        	return -2;
+        }
     	for(int i=0;i<filename.length-1;i++) {
     		String datecut1=filename[i].substring(0,10);//只获取文件名前的日期
-    		String datecut2=filename[i+1].substring(0,10);//前后两个日期  		
+    		String datecut2=filename[i+1].substring(0,10);//前后两个日期
     		if (date.equals(datecut1)) {   	   			
     			mid=i;
     			return mid;

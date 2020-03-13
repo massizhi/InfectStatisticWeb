@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="pojo.Info" %>
+<%@page import="pojo.Info,java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,13 +14,13 @@
 <title>china</title>
 </head>
 <body>
-<%=request.getAttribute("info") %>
 	<!--选择日期 -->
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<div class="btn-group">
 				<button class="btn btn-default">请选择日期</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
 				<ul class="dropdown-menu">
+					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-02">2020-02-02</a></li>
 					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-01">2020-02-01</a></li>
 					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-31">2020-01-31</a></li>
 					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-30">2020-01-30</a></li>
@@ -73,20 +73,20 @@
 			<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
 			</tr>
 			<tr>
-			<td><%="" %></td><td><%="" %></td><td><%="---" %></td>
+			<td><%=request.getAttribute("info2") %></td><td><%=request.getAttribute("info3") %></td><td><%="---" %></td>
 			</tr>
 			<tr>
-			<td><%="昨日" %></td><td><%="昨日" %></td><td><%="昨日---" %></td>
+			<td><%="昨日+"+request.getAttribute("info4") %></td><td><%="昨日+"+request.getAttribute("info5") %></td><td><%="昨日---" %></td>
 			</tr>
 			
 			<tr>
 			<td><%="累计确诊" %></td><td><%="累计治愈" %></td><td><%="累计死亡" %></td>
 			</tr>
 			<tr>
-			<td><%="" %></td><td><%="" %></td><td><%="" %></td>
+			<td><%=request.getAttribute("info6") %></td><td><%=request.getAttribute("info7") %></td><td><%=request.getAttribute("info8") %></td>
 			</tr>
 			<tr>
-			<td><%="昨日" %></td><td><%="昨日" %></td><td><%="昨日" %></td>
+			<td><%="昨日+"+request.getAttribute("info9") %></td><td><%="昨日+"+request.getAttribute("info10") %></td><td><%="昨日+"+request.getAttribute("info11") %></td>
 			</tr>
 		</table>	
 		<%} 	
