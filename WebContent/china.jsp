@@ -15,28 +15,24 @@
 </head>
 <body>
 	<!--选择日期 -->
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<div class="btn-group">
-				<button class="btn btn-default">请选择日期</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-				<ul class="dropdown-menu">
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-02">2020-02-02</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-01">2020-02-01</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-31">2020-01-31</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-30">2020-01-30</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-29">2020-01-29</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-28">2020-01-28</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-27">2020-01-27</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-26">2020-01-26</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-25">2020-01-25</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-24">2020-01-24</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-23">2020-01-23</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-22">2020-01-22</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-21">2020-01-21</a></li>
-					<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-20">2020-01-20</a></li>
-				</ul>
-			</div>
-		</div>
+	<div class="btn-group">
+		<button class="btn btn-default">请选择日期</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-02">2020-02-02</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-01">2020-02-01</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-31">2020-01-31</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-30">2020-01-30</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-29">2020-01-29</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-28">2020-01-28</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-27">2020-01-27</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-26">2020-01-26</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-25">2020-01-25</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-24">2020-01-24</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-23">2020-01-23</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-22">2020-01-22</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-21">2020-01-21</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-20">2020-01-20</a></li>
+		</ul>
 	</div>
 	<%--显示疫情数据信息 --%>
 	<%
@@ -92,262 +88,294 @@
 		<%} 	
 	%>
 	
-	<%--显示疫情图像信息 --%>
-	<%--当前现有确诊病例数图像信息 --%>
-	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="china1" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('china1'));
-
-        // 指定图表的配置项和数据
-        var option = {
-        title : {
-            text: '',
-            subtext: '当前现有确诊病例数，排除治愈、死亡。',
-            x:'center'
-        },
-        tooltip : {//提示框组件。
-            trigger: 'item'
-        },
-        visualMap: {
-            type: 'piecewise',
-            pieces: [
-                {min: 1500,color: '#6D000E'},
-                {min: 900, max: 1500,color: '#A30014'},
-                {min: 310, max: 1000,color: '#B8741A'},
-                {min: 200, max: 300,color: '#F59A23'},
-                {min: 1, max: 200,color: '#FACD91'},
-                {max: 0,color: '#F2F2F2'}
-              	//label: '';
-            ]
-        },
-        series: [
-            {
-                name: '确诊病例',
-                type: 'map',
-                mapType: 'china',
-                label: {
-                    show: true,
-                    color: '#000000',
-                    fontSize:10
-                },
-                data: [
-                    {name: '北京',value: 5},
-                    {name: '天津',value: Math.round(Math.random()*2000)},
-                    {name: '上海',value: Math.round(Math.random()*2000)},
-                    {name: '重庆',value: Math.round(Math.random()*2000)},
-                    {name: '河北',value: 0},
-                    {name: '河南',value: Math.round(Math.random()*2000)},
-                    {name: '云南',value: 123},
-                    {name: '辽宁',value: 305},
-                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
-                    {name: '湖南',value: 200},
-                    {name: '安徽',value: Math.round(Math.random()*2000)},
-                    {name: '山东',value: Math.round(Math.random()*2000)},
-                    {name: '新疆',value: Math.round(Math.random()*2000)},
-                    {name: '江苏',value: Math.round(Math.random()*2000)},
-                    {name: '浙江',value: Math.round(Math.random()*2000)},
-                    {name: '江西',value: Math.round(Math.random()*2000)},
-                    {name: '湖北',value: Math.round(Math.random()*2000)},
-                    {name: '广西',value: Math.round(Math.random()*2000)},
-                    {name: '甘肃',value: Math.round(Math.random()*2000)},
-                    {name: '山西',value: Math.round(Math.random()*2000)},
-                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
-                    {name: '陕西',value: Math.round(Math.random()*2000)},
-                    {name: '吉林',value: Math.round(Math.random()*2000)},
-                    {name: '福建',value: Math.round(Math.random()*2000)},
-                    {name: '贵州',value: Math.round(Math.random()*2000)},
-                    {name: '广东',value: Math.round(Math.random()*2000)},
-                    {name: '青海',value: Math.round(Math.random()*2000)},
-                    {name: '西藏',value: Math.round(Math.random()*2000)},
-                    {name: '四川',value: Math.round(Math.random()*2000)},
-                    {name: '宁夏',value: Math.round(Math.random()*2000)},
-                    {name: '海南',value: Math.round(Math.random()*2000)},
-                    {name: '台湾',value: Math.round(Math.random()*2000)},
-                    {name: '香港',value: Math.round(Math.random()*2000)},
-                    {name: '澳门',value: Math.round(Math.random()*2000)}
-                ]
-            }
-        ]
-    };
-    myChart.setOption(option);
-    myChart.on('click', function (params) {
-        var dataIndex = params.dataIndex;
-        //console.log(params);
-        //window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
-        window.localStorage.setItem("selectedProvince", params.name);
-        window.open('province.jsp');
-    });
-	</script>
+	<%--显示疫情中国地图信息 --%>
+	<div class="tabbable" id="tabs-649963">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				 <a href="#panel-834682" data-toggle="tab">现有确诊</a>
+			</li>
+			<li>
+				 <a href="#panel-345929" data-toggle="tab">累计确诊</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="panel-834682">
+				<%--显示疫情图像信息 --%>
+				<%--当前现有确诊病例数图像信息 --%>
+				<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+			    <div id="china1" style="width: 600px;height:400px;"></div>
+			    <script type="text/javascript">
+			        // 基于准备好的dom，初始化echarts实例
+			        var myChart = echarts.init(document.getElementById('china1'));
+			
+			        // 指定图表的配置项和数据
+			        var option = {
+			        title : {
+			            text: '',
+			            subtext: '当前现有确诊病例数，排除治愈、死亡。',
+			            x:'center'
+			        },
+			        tooltip : {//提示框组件。
+			            trigger: 'item'
+			        },
+			        visualMap: {
+			            type: 'piecewise',
+			            pieces: [
+			                {min: 1500,color: '#6D000E'},
+			                {min: 900, max: 1500,color: '#A30014'},
+			                {min: 310, max: 1000,color: '#B8741A'},
+			                {min: 200, max: 300,color: '#F59A23'},
+			                {min: 1, max: 200,color: '#FACD91'},
+			                {max: 0,color: '#F2F2F2'}
+			              	//label: '';
+			            ]
+			        },
+			        series: [
+			            {
+			                name: '确诊病例',
+			                type: 'map',
+			                mapType: 'china',
+			                label: {
+			                    show: true,
+			                    color: '#000000',
+			                    fontSize:10
+			                },
+			                data: [
+			                    {name: '北京',value: 5},
+			                    {name: '天津',value: Math.round(Math.random()*2000)},
+			                    {name: '上海',value: Math.round(Math.random()*2000)},
+			                    {name: '重庆',value: Math.round(Math.random()*2000)},
+			                    {name: '河北',value: 0},
+			                    {name: '河南',value: Math.round(Math.random()*2000)},
+			                    {name: '云南',value: 123},
+			                    {name: '辽宁',value: 305},
+			                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
+			                    {name: '湖南',value: 200},
+			                    {name: '安徽',value: Math.round(Math.random()*2000)},
+			                    {name: '山东',value: Math.round(Math.random()*2000)},
+			                    {name: '新疆',value: Math.round(Math.random()*2000)},
+			                    {name: '江苏',value: Math.round(Math.random()*2000)},
+			                    {name: '浙江',value: Math.round(Math.random()*2000)},
+			                    {name: '江西',value: Math.round(Math.random()*2000)},
+			                    {name: '湖北',value: Math.round(Math.random()*2000)},
+			                    {name: '广西',value: Math.round(Math.random()*2000)},
+			                    {name: '甘肃',value: Math.round(Math.random()*2000)},
+			                    {name: '山西',value: Math.round(Math.random()*2000)},
+			                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
+			                    {name: '陕西',value: Math.round(Math.random()*2000)},
+			                    {name: '吉林',value: Math.round(Math.random()*2000)},
+			                    {name: '福建',value: Math.round(Math.random()*2000)},
+			                    {name: '贵州',value: Math.round(Math.random()*2000)},
+			                    {name: '广东',value: Math.round(Math.random()*2000)},
+			                    {name: '青海',value: Math.round(Math.random()*2000)},
+			                    {name: '西藏',value: Math.round(Math.random()*2000)},
+			                    {name: '四川',value: Math.round(Math.random()*2000)},
+			                    {name: '宁夏',value: Math.round(Math.random()*2000)},
+			                    {name: '海南',value: Math.round(Math.random()*2000)},
+			                    {name: '台湾',value: Math.round(Math.random()*2000)},
+			                    {name: '香港',value: Math.round(Math.random()*2000)},
+			                    {name: '澳门',value: Math.round(Math.random()*2000)}
+			                ]
+			            }
+			        ]
+			    };
+			    myChart.setOption(option);
+			    myChart.on('click', function (params) {
+			        var dataIndex = params.dataIndex;
+			        //console.log(params);
+			        //window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+			        window.localStorage.setItem("selectedProvince", params.name);
+			        window.open('province.jsp');
+			    });
+				</script>
+			</div>
+			<div class="tab-pane" id="panel-345929">
+				<%--累计确诊病例数图像信息 --%>
+				<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+			    <div id="china2" style="width: 600px;height:400px;"></div>
+			    <script type="text/javascript">
+			        // 基于准备好的dom，初始化echarts实例
+			        var myChart = echarts.init(document.getElementById('china2'));
+			
+			        // 指定图表的配置项和数据
+			        var option = {
+			        title : {
+			            text: '',
+			            subtext: '累计确诊病例数，包含治愈、死亡。',
+			            x:'center'
+			        },
+			        tooltip : {//提示框组件。
+			            trigger: 'item'
+			        },
+			        visualMap: {
+			            type: 'piecewise',
+			            pieces: [
+			                {min: 1500,color: '#6D000E'},
+			                {min: 900, max: 1500,color: '#A30014'},
+			                {min: 310, max: 1000,color: '#B8741A'},
+			                {min: 200, max: 300,color: '#F59A23'},
+			                {min: 1, max: 200,color: '#FACD91'},
+			                {max: 0,color: '#F2F2F2'}
+			              	//label: '';
+			            ],
+			        },
+			        series: [
+			            {
+			                name: '确诊病例',
+			                type: 'map',
+			                mapType: 'china',
+			                label: {
+			                    show: true,
+			                    color: '#000000',
+			                    fontSize:10
+			                },
+			                data: [
+			                    {name: '北京',value: 5},
+			                    {name: '天津',value: Math.round(Math.random()*2000)},
+			                    {name: '上海',value: Math.round(Math.random()*2000)},
+			                    {name: '重庆',value: Math.round(Math.random()*2000)},
+			                    {name: '河北',value: 0},
+			                    {name: '河南',value: Math.round(Math.random()*2000)},
+			                    {name: '云南',value: 123},
+			                    {name: '辽宁',value: 305},
+			                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
+			                    {name: '湖南',value: 200},
+			                    {name: '安徽',value: Math.round(Math.random()*2000)},
+			                    {name: '山东',value: Math.round(Math.random()*2000)},
+			                    {name: '新疆',value: Math.round(Math.random()*2000)},
+			                    {name: '江苏',value: Math.round(Math.random()*2000)},
+			                    {name: '浙江',value: Math.round(Math.random()*2000)},
+			                    {name: '江西',value: Math.round(Math.random()*2000)},
+			                    {name: '湖北',value: Math.round(Math.random()*2000)},
+			                    {name: '广西',value: Math.round(Math.random()*2000)},
+			                    {name: '甘肃',value: Math.round(Math.random()*2000)},
+			                    {name: '山西',value: Math.round(Math.random()*2000)},
+			                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
+			                    {name: '陕西',value: Math.round(Math.random()*2000)},
+			                    {name: '吉林',value: Math.round(Math.random()*2000)},
+			                    {name: '福建',value: Math.round(Math.random()*2000)},
+			                    {name: '贵州',value: Math.round(Math.random()*2000)},
+			                    {name: '广东',value: Math.round(Math.random()*2000)},
+			                    {name: '青海',value: Math.round(Math.random()*2000)},
+			                    {name: '西藏',value: Math.round(Math.random()*2000)},
+			                    {name: '四川',value: Math.round(Math.random()*2000)},
+			                    {name: '宁夏',value: Math.round(Math.random()*2000)},
+			                    {name: '海南',value: Math.round(Math.random()*2000)},
+			                    {name: '台湾',value: Math.round(Math.random()*2000)},
+			                    {name: '香港',value: Math.round(Math.random()*2000)},
+			                    {name: '澳门',value: Math.round(Math.random()*2000)}
+			                ]
+			            }
+			        ]
+			    };
+			    myChart.setOption(option);
+			    myChart.on('mouseover', function (params) {
+			        var dataIndex = params.dataIndex;
+			        console.log(params);
+			    });
+				</script>
+			</div>
+		</div>
+	</div>
 	
-	<%--累计确诊病例数图像信息 --%>
-	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="china2" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('china2'));
-
-        // 指定图表的配置项和数据
-        var option = {
-        title : {
-            text: '',
-            subtext: '累计确诊病例数，包含治愈、死亡。',
-            x:'center'
-        },
-        tooltip : {//提示框组件。
-            trigger: 'item'
-        },
-        visualMap: {
-            type: 'piecewise',
-            pieces: [
-                {min: 1500,color: '#6D000E'},
-                {min: 900, max: 1500,color: '#A30014'},
-                {min: 310, max: 1000,color: '#B8741A'},
-                {min: 200, max: 300,color: '#F59A23'},
-                {min: 1, max: 200,color: '#FACD91'},
-                {max: 0,color: '#F2F2F2'}
-              	//label: '';
-            ],
-        },
-        series: [
-            {
-                name: '确诊病例',
-                type: 'map',
-                mapType: 'china',
-                label: {
-                    show: true,
-                    color: '#000000',
-                    fontSize:10
-                },
-                data: [
-                    {name: '北京',value: 5},
-                    {name: '天津',value: Math.round(Math.random()*2000)},
-                    {name: '上海',value: Math.round(Math.random()*2000)},
-                    {name: '重庆',value: Math.round(Math.random()*2000)},
-                    {name: '河北',value: 0},
-                    {name: '河南',value: Math.round(Math.random()*2000)},
-                    {name: '云南',value: 123},
-                    {name: '辽宁',value: 305},
-                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
-                    {name: '湖南',value: 200},
-                    {name: '安徽',value: Math.round(Math.random()*2000)},
-                    {name: '山东',value: Math.round(Math.random()*2000)},
-                    {name: '新疆',value: Math.round(Math.random()*2000)},
-                    {name: '江苏',value: Math.round(Math.random()*2000)},
-                    {name: '浙江',value: Math.round(Math.random()*2000)},
-                    {name: '江西',value: Math.round(Math.random()*2000)},
-                    {name: '湖北',value: Math.round(Math.random()*2000)},
-                    {name: '广西',value: Math.round(Math.random()*2000)},
-                    {name: '甘肃',value: Math.round(Math.random()*2000)},
-                    {name: '山西',value: Math.round(Math.random()*2000)},
-                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
-                    {name: '陕西',value: Math.round(Math.random()*2000)},
-                    {name: '吉林',value: Math.round(Math.random()*2000)},
-                    {name: '福建',value: Math.round(Math.random()*2000)},
-                    {name: '贵州',value: Math.round(Math.random()*2000)},
-                    {name: '广东',value: Math.round(Math.random()*2000)},
-                    {name: '青海',value: Math.round(Math.random()*2000)},
-                    {name: '西藏',value: Math.round(Math.random()*2000)},
-                    {name: '四川',value: Math.round(Math.random()*2000)},
-                    {name: '宁夏',value: Math.round(Math.random()*2000)},
-                    {name: '海南',value: Math.round(Math.random()*2000)},
-                    {name: '台湾',value: Math.round(Math.random()*2000)},
-                    {name: '香港',value: Math.round(Math.random()*2000)},
-                    {name: '澳门',value: Math.round(Math.random()*2000)}
-                ]
-            }
-        ]
-    };
-    myChart.setOption(option);
-    myChart.on('mouseover', function (params) {
-        var dataIndex = params.dataIndex;
-        console.log(params);
-    });
-	</script>
-	
-	<!-- 全国新增确诊病例趋势图 -->
-	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="line1" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('line1'));
-
-        // 指定图表的配置项和数据
-        var option = {
-       	    title: {
-       	        text: '全国新增确诊病例',
-       	        subtext: '单位：例'
-       	    },
-       	    tooltip: {
-       	        trigger: 'axis'
-       	    },
-       	    xAxis: {
-       	        type: 'category',
-       	        boundaryGap: false,
-       	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
-       	    },
-       	    yAxis: {
-       	        type: 'value',
-       	        axisLabel: {
-       	            formatter: '{value}'
-       	        },
-       	        axisPointer: {
-       	            snap: true
-       	        }
-       	    },
-       	    series: [
-       	        {
-       	            name: '新增确诊',
-       	            type: 'line',
-       	            smooth: true,
-       	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
-       	        }
-       	    ]
-       	};
-        myChart.setOption(option);
-	</script>
-	
-	<!-- 全国累计确诊病例趋势图 -->
-	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="line2" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('line2'));
-
-        // 指定图表的配置项和数据
-        var option = {
-       	    title: {
-       	        text: '全国累计确诊病例',
-       	        subtext: '单位：例'
-       	    },
-       	    tooltip: {
-       	        trigger: 'axis'
-       	    },
-       	    xAxis: {
-       	        type: 'category',
-       	        boundaryGap: false,
-       	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
-       	    },
-       	    yAxis: {
-       	        type: 'value',
-       	        axisLabel: {
-       	            formatter: '{value}'
-       	        },
-       	        axisPointer: {
-       	            snap: true
-       	        }
-       	    },
-       	    series: [
-       	        {
-       	            name: '累计确诊',
-       	            type: 'line',
-       	            smooth: true,
-       	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
-       	        }
-       	    ]
-       	};
-        myChart.setOption(option);
-	</script>
+	<!-- 全国病例趋势图 -->
+	<div class="tabbable" id="tabs-419538">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				 <a href="#panel-654207" data-toggle="tab">新增确诊病例趋势图</a>
+			</li>
+			<li>
+				 <a href="#panel-349743" data-toggle="tab">累计确诊病例趋势图</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="panel-654207">
+				<!-- 全国新增确诊病例趋势图 -->
+				<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+				   <div id="line1" style="width: 600px;height:400px;"></div>
+				   <script type="text/javascript">
+				       // 基于准备好的dom，初始化echarts实例
+				       var myChart = echarts.init(document.getElementById('line1'));
+				
+				       // 指定图表的配置项和数据
+				       var option = {
+				      	    title: {
+				      	        text: '全国新增确诊病例',
+				      	        subtext: '单位：例'
+				      	    },
+				      	    tooltip: {
+				      	        trigger: 'axis'
+				      	    },
+				      	    xAxis: {
+				      	        type: 'category',
+				      	        boundaryGap: false,
+				      	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+				      	    },
+				      	    yAxis: {
+				      	        type: 'value',
+				      	        axisLabel: {
+				      	            formatter: '{value}'
+				      	        },
+				      	        axisPointer: {
+				      	            snap: true
+				      	        }
+				      	    },
+				      	    series: [
+				      	        {
+				      	            name: '新增确诊',
+				      	            type: 'line',
+				      	            smooth: true,
+				      	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
+				      	        }
+				      	    ]
+				      	};
+				       myChart.setOption(option);
+				</script>
+			</div>
+			<div class="tab-pane" id="panel-349743">
+				<!-- 全国累计确诊病例趋势图 -->
+				<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+				   <div id="line2" style="width: 600px;height:400px;"></div>
+				   <script type="text/javascript">
+				       // 基于准备好的dom，初始化echarts实例
+				       var myChart = echarts.init(document.getElementById('line2'));
+				
+				       // 指定图表的配置项和数据
+				       var option = {
+				      	    title: {
+				      	        text: '全国累计确诊病例',
+				      	        subtext: '单位：例'
+				      	    },
+				      	    tooltip: {
+				      	        trigger: 'axis'
+				      	    },
+				      	    xAxis: {
+				      	        type: 'category',
+				      	        boundaryGap: false,
+				      	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+				      	    },
+				      	    yAxis: {
+				      	        type: 'value',
+				      	        axisLabel: {
+				      	            formatter: '{value}'
+				      	        },
+				      	        axisPointer: {
+				      	            snap: true
+				      	        }
+				      	    },
+				      	    series: [
+				      	        {
+				      	            name: '累计确诊',
+				      	            type: 'line',
+				      	            smooth: true,
+				      	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
+				      	        }
+				      	    ]
+				      	};
+				       myChart.setOption(option);
+				</script>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
