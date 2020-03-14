@@ -58,54 +58,6 @@ public class toProvince extends HttpServlet {
 			args[3]="4";args[4]="dead";
 			GetInfo temp7=new GetInfo();	
 			request.setAttribute("infop8",temp7.getInfo(args));
-			
-			//line1数据
-			args[0]="2020-01-19";args[3]="4";args[4]="ip";
-			GetInfo temp8=new GetInfo();	
-			request.setAttribute("infop9",temp8.getInfo(args));
-			args[0]="2020-01-20";
-			GetInfo temp9=new GetInfo();	
-			request.setAttribute("infop10",temp9.getInfo(args));
-			args[0]="2020-01-21";
-			GetInfo temp10=new GetInfo();	
-			request.setAttribute("infop11",temp10.getInfo(args));
-			args[0]="2020-01-22";
-			GetInfo temp11=new GetInfo();	
-			request.setAttribute("infop12",temp11.getInfo(args));
-			args[0]="2020-01-23";
-			GetInfo temp12=new GetInfo();	
-			request.setAttribute("infop13",temp12.getInfo(args));
-			args[0]="2020-01-24";
-			GetInfo temp13=new GetInfo();	
-			request.setAttribute("infop14",temp13.getInfo(args));
-			args[0]="2020-01-25";
-			GetInfo temp14=new GetInfo();	
-			request.setAttribute("infop15",temp14.getInfo(args));
-			args[0]="2020-01-26";
-			GetInfo temp15=new GetInfo();	
-			request.setAttribute("infop16",temp15.getInfo(args));
-			args[0]="2020-01-27";
-			GetInfo temp16=new GetInfo();	
-			request.setAttribute("infop17",temp16.getInfo(args));
-			args[0]="2020-01-28";
-			GetInfo temp17=new GetInfo();	
-			request.setAttribute("infop18",temp17.getInfo(args));
-			args[0]="2020-01-29";
-			GetInfo temp18=new GetInfo();	
-			request.setAttribute("infop19",temp18.getInfo(args));
-			args[0]="2020-01-30";
-			GetInfo temp19=new GetInfo();	
-			request.setAttribute("infop20",temp19.getInfo(args));
-			args[0]="2020-01-31";
-			GetInfo temp20=new GetInfo();	
-			request.setAttribute("infop21",temp20.getInfo(args));
-			args[0]="2020-02-01";
-			GetInfo temp21=new GetInfo();	
-			request.setAttribute("infop22",temp21.getInfo(args));
-			args[0]="2020-02-02";
-			GetInfo temp22=new GetInfo();	
-			request.setAttribute("infop23",temp22.getInfo(args));
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
