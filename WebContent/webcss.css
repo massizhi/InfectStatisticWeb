@@ -38,6 +38,7 @@ a:visited{
     margin: 0 auto;
 }
 #img1{
+<<<<<<< Updated upstream
     background-image: url(3.jpg);
     display: block;
 }
@@ -47,6 +48,17 @@ a:visited{
 }
 #img3{
     background-image: url(33.jpg);
+=======
+    background-image: url(pictures/3.jpg);
+    display: block;
+}
+#img2{
+    background-image: url(pictures/2.jpg);		
+    display: none;
+}
+#img3{
+    background-image: url(pictures/33.JPG);
+>>>>>>> Stashed changes
     display: none;
     
 }
@@ -57,6 +69,7 @@ a:visited{
     top:200px;
     
 }
+<<<<<<< Updated upstream
 #data{
     width:800px;
     height:350px;
@@ -86,17 +99,27 @@ a:visited{
     position: absolute;
     left:820px;
 }
+=======
+
+>>>>>>> Stashed changes
 .country{
     width: 800px;
     height:450px;
     margin: 0 auto;
+<<<<<<< Updated upstream
     background-color: burlywood;
+=======
+>>>>>>> Stashed changes
 }
 .charts{
     width: 800px;
     height:380px;
     margin: 0 auto;
+<<<<<<< Updated upstream
     background-color:#8ED2EF;
+=======
+    margin-top:40px;
+>>>>>>> Stashed changes
 }
 #question{
     width: 350px;
@@ -104,6 +127,7 @@ a:visited{
     float: left;
     position: absolute;
     left: 250px;
+<<<<<<< Updated upstream
     top:1900px;
     text-align: center;
     background-image: url(gbg.png);
@@ -118,6 +142,24 @@ a:visited{
     width: 320px;
     height:310px;
     background-image: url(gbg.png);
+=======
+    top:1810px;
+    text-align: center;
+    background-image: url(pictures/gbg.png);
+    background-size: 350px 350px;
+    background-repeat: no-repeat;
+    padding-top:40px;
+}
+#usemask{
+    padding-top: 40px;
+    padding-left:40px;
+    position: absolute;
+    left: 650px;
+    top:1810px;
+    width: 350px;
+    height:350px;
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size: 350px 350px;
     background-repeat: no-repeat;
     float: right; 
@@ -146,106 +188,178 @@ a:visited{
 #button1{
     width: 160px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:150px 40px;
     background-repeat: no-repeat;    
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 330px;
+<<<<<<< Updated upstream
     top:4075px;
 }
 #button1:hover,#button2:hover,#button3:hover,#button4:hover,#button5:hover,#button6:hover,#button7:hover,
 .button8:hover,.button9:hover,.button10:hover{
     background-image: url(gbg1.png);
+=======
+    top:3950px;
+}
+#button1:hover,#button2:hover,#button3:hover,#button4:hover,#button5:hover,#button6:hover,#button7:hover,
+.button8:hover,.button9:hover,.button10:hover{
+    background-image: url(pictures/gbg1.png);
+>>>>>>> Stashed changes
 }
 #button4{
     width: 130px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:130px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 330px;
+<<<<<<< Updated upstream
     top:4710px;
+=======
+    top:4630px;
+>>>>>>> Stashed changes
 }
 #button5{
     width: 130px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:130px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 490px;
+<<<<<<< Updated upstream
     top:4710px;
+=======
+    top:4630px;
+>>>>>>> Stashed changes
 }
 #button6{
     width: 130px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:130px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 650px;
+<<<<<<< Updated upstream
     top:4710px;
+=======
+    top:4630px;
+>>>>>>> Stashed changes
 }
 #button7{
     width: 130px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:130px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 805px;
+<<<<<<< Updated upstream
     top:4710px;
+=======
+    top:4630px;
+>>>>>>> Stashed changes
 }
 #button2{
     width: 160px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:150px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 555px;
+<<<<<<< Updated upstream
     top:4075px;
+=======
+    top:3950px;
+>>>>>>> Stashed changes
 }
 #button3{
     width: 160px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:150px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
     position: absolute;
     left: 770px;
+<<<<<<< Updated upstream
     top:4075px;
+=======
+    top:3950px;
+>>>>>>> Stashed changes
 }
 #post{
     width: 600px;
     height:500px;
     margin: 0 auto;
     margin-top: -25px;
+<<<<<<< Updated upstream
     background-image: url(222.PNG);
+=======
+    background-image: url(pictures/222.PNG);
+>>>>>>> Stashed changes
     background-repeat: no-repeat;
 }
 #incorrect{
     width: 600px;
+<<<<<<< Updated upstream
     height:230px;
     margin: 0 auto;
     margin-top: -25px;
     background-image: url(gbg.png);
     background-size: 580px 240px;
+=======
+    height:200px;
+    margin: 0 auto;
+    margin-top: -25px;
+    background-image: url(pictures/gbg.png);
+    background-size: 580px 200px;
+>>>>>>> Stashed changes
     background-repeat: no-repeat;        
 }
 #hotsearch{
@@ -253,7 +367,11 @@ a:visited{
     height:290px;
     margin: 0 auto;
     margin-top: -25px;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size: 580px 270px;
     background-repeat: no-repeat; 
     padding-top: 15px;
@@ -261,6 +379,10 @@ a:visited{
 #post p,h4{
     margin-left: 65px;
     margin-top: 25px;
+<<<<<<< Updated upstream
+=======
+    padding-right:10px;
+>>>>>>> Stashed changes
 }
 #incorrect p{
     margin-left: 65px;
@@ -281,13 +403,21 @@ em{
 .add{
     position: absolute;
     left: 730px;
+<<<<<<< Updated upstream
     top: 1840px;
+=======
+    top: 1760px;
+>>>>>>> Stashed changes
     z-index: 10;
 }
 .totop{
     height: 50px;
     width: 100px;
+<<<<<<< Updated upstream
     background-image: url(gbg1.png);
+=======
+    background-image: url(pictures/gbg1.png);
+>>>>>>> Stashed changes
     background-size:100px 50px;
     background-repeat: no-repeat;  
     text-align: center;
@@ -316,11 +446,19 @@ em{
 }
 #report{
     width: 600px;
+<<<<<<< Updated upstream
     height:380px;
     margin: 0 auto;
     margin-top: -25px;
     background-image: url(gbg.png);
     background-size: 580px 400px;
+=======
+    height:450px;
+    margin: 0 auto;
+    margin-top: -25px;
+    background-image: url(pictures/gbg.png);
+    background-size: 580px 450px;
+>>>>>>> Stashed changes
     background-repeat: no-repeat;    
     padding-top: 30px;
 }
@@ -330,6 +468,7 @@ em{
 }
 .donatemask{
     width: 600px;
+<<<<<<< Updated upstream
     height:380px;
     margin: 0 auto;
     margin-top: -25px;
@@ -338,6 +477,21 @@ em{
     background-repeat: no-repeat;    
     padding-top: 30px;
 }
+=======
+    height:450px;
+    margin: 0 auto;
+    margin-top: -25px;
+    background-image: url(pictures/gbg.png);
+    background-size: 580px 450px;
+    background-repeat: no-repeat;    
+    padding-top: 30px;
+}
+#volunteer{
+	margin-top:20px;
+	height:400px;
+	background-size: 580px 400px;
+}
+>>>>>>> Stashed changes
 .donatemask p{
     margin: 20px;
     margin-left: 80px;
@@ -345,12 +499,20 @@ em{
 #slogan{
     width: 800px;
     height: 60px;
+<<<<<<< Updated upstream
     background-image: url(gbg1.png);
+=======
+    background-image: url(pictures/gbg1.png);
+>>>>>>> Stashed changes
     background-size: 800px 60px;
     background-repeat: no-repeat;  
     margin: 0 auto;
     text-align: center;
+<<<<<<< Updated upstream
     margin-top: 5px;
+=======
+    margin-top: 80px;
+>>>>>>> Stashed changes
 }
 #slogan h3{
     margin-top: -5px;
@@ -373,7 +535,11 @@ em{
     width: 700px;
     height: 370px;
     margin: 0 auto;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:700px 370px;
     background-repeat: no-repeat;  
     text-align: center;
@@ -384,12 +550,18 @@ em{
 .sell h3{
     text-align: center;
     position: absolute;
+<<<<<<< Updated upstream
     left: 550px;
     top:5770px;
+=======
+    left: 560px;
+    top:5730px;
+>>>>>>> Stashed changes
 }
 .sell p{
     text-align: center;
     position: absolute;
+<<<<<<< Updated upstream
     left: 568px;
     top:6000px;
 }
@@ -397,15 +569,37 @@ em{
     width: 160px;
     text-align: center;
     background-image: url(gbg.png);
+=======
+    left: 600px;
+    top:6000px;
+}
+.sell table{
+	margin-left:40px;
+}
+.button8{
+    width: 160px;
+    text-align: center;
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:160px 40px;
     background-repeat: no-repeat;  
     height: 40px;
     padding-top: 15px;
+<<<<<<< Updated upstream
+=======
+    position: absolute;
+    left: 330px;
+    top:5645px;
+>>>>>>> Stashed changes
 }
 .button9{
     width: 160px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:160px 40px;
     background-repeat: no-repeat;  
     height: 40px;
@@ -417,7 +611,11 @@ em{
 .button10{
     width: 160px;
     text-align: center;
+<<<<<<< Updated upstream
     background-image: url(gbg.png);
+=======
+    background-image: url(pictures/gbg.png);
+>>>>>>> Stashed changes
     background-size:160px 40px;
     background-repeat: no-repeat;  
     height: 40px;
