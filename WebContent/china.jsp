@@ -147,12 +147,12 @@
 			        visualMap: {
 			            type: 'piecewise',
 			            pieces: [
-			                {min: 1500,color: '#6D000E'},
-			                {min: 900, max: 1500,color: '#A30014'},
-			                {min: 310, max: 1000,color: '#B8741A'},
-			                {min: 200, max: 300,color: '#F59A23'},
-			                {min: 1, max: 200,color: '#FACD91'},
-			                {max: 0,color: '#F2F2F2'}
+			                {min: 1000,color: '#6D000E'},
+			                {min: 500, max: 1000,color: '#A30014'},
+			                {min: 300, max: 500,color: '#B8741A'},
+			                {min: 100, max: 300,color: '#F59A23'},
+			                {min: 1, max: 100,color: '#FACD91'},
+			                {max: 0,color: '#F2F2F2',label: '=0'}
 			              	//label: '';
 			            ]
 			        },
@@ -167,40 +167,40 @@
 			                    fontSize:10
 			                },
 			                data: [
-			                    {name: '北京',value: 5},
-			                    {name: '天津',value: Math.round(Math.random()*2000)},
-			                    {name: '上海',value: Math.round(Math.random()*2000)},
-			                    {name: '重庆',value: Math.round(Math.random()*2000)},
-			                    {name: '河北',value: 0},
-			                    {name: '河南',value: Math.round(Math.random()*2000)},
-			                    {name: '云南',value: 123},
-			                    {name: '辽宁',value: 305},
-			                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
-			                    {name: '湖南',value: 200},
-			                    {name: '安徽',value: Math.round(Math.random()*2000)},
-			                    {name: '山东',value: Math.round(Math.random()*2000)},
-			                    {name: '新疆',value: Math.round(Math.random()*2000)},
-			                    {name: '江苏',value: Math.round(Math.random()*2000)},
-			                    {name: '浙江',value: Math.round(Math.random()*2000)},
-			                    {name: '江西',value: Math.round(Math.random()*2000)},
-			                    {name: '湖北',value: Math.round(Math.random()*2000)},
-			                    {name: '广西',value: Math.round(Math.random()*2000)},
-			                    {name: '甘肃',value: Math.round(Math.random()*2000)},
-			                    {name: '山西',value: Math.round(Math.random()*2000)},
-			                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
-			                    {name: '陕西',value: Math.round(Math.random()*2000)},
-			                    {name: '吉林',value: Math.round(Math.random()*2000)},
-			                    {name: '福建',value: Math.round(Math.random()*2000)},
-			                    {name: '贵州',value: Math.round(Math.random()*2000)},
-			                    {name: '广东',value: Math.round(Math.random()*2000)},
-			                    {name: '青海',value: Math.round(Math.random()*2000)},
-			                    {name: '西藏',value: Math.round(Math.random()*2000)},
-			                    {name: '四川',value: Math.round(Math.random()*2000)},
-			                    {name: '宁夏',value: Math.round(Math.random()*2000)},
-			                    {name: '海南',value: Math.round(Math.random()*2000)},
-			                    {name: '台湾',value: Math.round(Math.random()*2000)},
-			                    {name: '香港',value: Math.round(Math.random()*2000)},
-			                    {name: '澳门',value: Math.round(Math.random()*2000)}
+			                    {name: '北京',value: 181},
+			                    {name: '天津',value: 102},
+			                    {name: '上海',value: 156},
+			                    {name: '重庆',value: 258},
+			                    {name: '河北',value: 109},
+			                    {name: '河南',value: 488},
+			                    {name: '云南',value: 102},
+			                    {name: '辽宁',value: 63},
+			                    {name: '黑龙江',value: 91},
+			                    {name: '湖南',value: 455},
+			                    {name: '安徽',value: 335},
+			                    {name: '山东',value: 225},
+			                    {name: '新疆',value: 21},
+			                    {name: '江苏',value: 230},
+			                    {name: '浙江',value: 639},
+			                    {name: '江西',value: 324},
+			                    {name: '湖北',value: 8601},
+			                    {name: '广西',value: 127},
+			                    {name: '甘肃',value: 49},
+			                    {name: '山西',value: 55},
+			                    {name: '内蒙古',value: 26},
+			                    {name: '陕西',value: 102},
+			                    {name: '吉林',value: 22},
+			                    {name: '福建',value: 179},
+			                    {name: '贵州',value: 44},
+			                    {name: '广东',value: 649},
+			                    {name: '青海',value: 11},
+			                    {name: '西藏',value: 1},
+			                    {name: '四川',value: 228},
+			                    {name: '宁夏',value: 28},
+			                    {name: '海南',value: 64},
+			                    {name: '台湾',value: 0},
+			                    {name: '香港',value: 25},
+			                    {name: '澳门',value: 25}
 			                ]
 			            }
 			        ]
@@ -236,14 +236,14 @@
 			        visualMap: {
 			            type: 'piecewise',
 			            pieces: [
-			                {min: 1500,color: '#6D000E'},
-			                {min: 900, max: 1500,color: '#A30014'},
-			                {min: 310, max: 1000,color: '#B8741A'},
-			                {min: 200, max: 300,color: '#F59A23'},
-			                {min: 1, max: 200,color: '#FACD91'},
-			                {max: 0,color: '#F2F2F2'}
+			                {min: 1000,color: '#6D000E'},
+			                {min: 500, max: 1000,color: '#A30014'},
+			                {min: 300, max: 500,color: '#B8741A'},
+			                {min: 100, max: 300,color: '#F59A23'},
+			                {min: 1, max: 100,color: '#FACD91'},
+			                {max: 0,color: '#F2F2F2',label: '=0'}
 			              	//label: '';
-			            ],
+			            ]
 			        },
 			        series: [
 			            {
@@ -256,40 +256,40 @@
 			                    fontSize:10
 			                },
 			                data: [
-			                    {name: '北京',value: 5},
-			                    {name: '天津',value: Math.round(Math.random()*2000)},
-			                    {name: '上海',value: Math.round(Math.random()*2000)},
-			                    {name: '重庆',value: Math.round(Math.random()*2000)},
-			                    {name: '河北',value: 0},
-			                    {name: '河南',value: Math.round(Math.random()*2000)},
-			                    {name: '云南',value: 123},
-			                    {name: '辽宁',value: 305},
-			                    {name: '黑龙江',value: Math.round(Math.random()*2000)},
-			                    {name: '湖南',value: 200},
-			                    {name: '安徽',value: Math.round(Math.random()*2000)},
-			                    {name: '山东',value: Math.round(Math.random()*2000)},
-			                    {name: '新疆',value: Math.round(Math.random()*2000)},
-			                    {name: '江苏',value: Math.round(Math.random()*2000)},
-			                    {name: '浙江',value: Math.round(Math.random()*2000)},
-			                    {name: '江西',value: Math.round(Math.random()*2000)},
-			                    {name: '湖北',value: Math.round(Math.random()*2000)},
-			                    {name: '广西',value: Math.round(Math.random()*2000)},
-			                    {name: '甘肃',value: Math.round(Math.random()*2000)},
-			                    {name: '山西',value: Math.round(Math.random()*2000)},
-			                    {name: '内蒙古',value: Math.round(Math.random()*2000)},
-			                    {name: '陕西',value: Math.round(Math.random()*2000)},
-			                    {name: '吉林',value: Math.round(Math.random()*2000)},
-			                    {name: '福建',value: Math.round(Math.random()*2000)},
-			                    {name: '贵州',value: Math.round(Math.random()*2000)},
-			                    {name: '广东',value: Math.round(Math.random()*2000)},
-			                    {name: '青海',value: Math.round(Math.random()*2000)},
-			                    {name: '西藏',value: Math.round(Math.random()*2000)},
-			                    {name: '四川',value: Math.round(Math.random()*2000)},
-			                    {name: '宁夏',value: Math.round(Math.random()*2000)},
-			                    {name: '海南',value: Math.round(Math.random()*2000)},
-			                    {name: '台湾',value: Math.round(Math.random()*2000)},
-			                    {name: '香港',value: Math.round(Math.random()*2000)},
-			                    {name: '澳门',value: Math.round(Math.random()*2000)}
+			                    {name: '北京',value: 191},
+			                    {name: '天津',value: 121},
+			                    {name: '上海',value: 167},
+			                    {name: '重庆',value: 262},
+			                    {name: '河北',value: 113},
+			                    {name: '河南',value: 493},
+			                    {name: '云南',value: 105},
+			                    {name: '辽宁',value: 64},
+			                    {name: '黑龙江',value: 95},
+			                    {name: '湖南',value: 463},
+			                    {name: '安徽',value: 340},
+			                    {name: '山东',value: 225},
+			                    {name: '新疆',value: 21},
+			                    {name: '江苏',value: 236},
+			                    {name: '浙江',value: 661},
+			                    {name: '江西',value: 334},
+			                    {name: '湖北',value: 9074},
+			                    {name: '广西',value: 129},
+			                    {name: '甘肃',value: 52},
+			                    {name: '山西',value: 56},
+			                    {name: '内蒙古',value: 27},
+			                    {name: '陕西',value: 102},
+			                    {name: '吉林',value: 23},
+			                    {name: '福建',value: 179},
+			                    {name: '贵州',value: 46},
+			                    {name: '广东',value: 663},
+			                    {name: '青海',value: 11},
+			                    {name: '西藏',value: 1},
+			                    {name: '四川',value: 232},
+			                    {name: '宁夏',value: 28},
+			                    {name: '海南',value: 69},
+			                    {name: '台湾',value: 0},
+			                    {name: '香港',value: 25},
+			                    {name: '澳门',value: 25}
 			                ]
 			            }
 			        ]
@@ -307,20 +307,25 @@
 		</div>
 	</div>
 	</div>
+	
+	
 	<div class="charts" style="background-color:transparent;margin-top:40px;">
 	<!-- 全国病例趋势图 -->
 	<div class="tabbable" id="tabs-419538">
 		<ul class="nav nav-tabs">
 			<li class="active">
-				 <a href="#panel-654207" data-toggle="tab">新增确诊病例趋势图</a>
+				 <a href="#panel-654207" data-toggle="tab">现有确诊病例趋势图</a>
 			</li>
 			<li>
 				 <a href="#panel-349743" data-toggle="tab">累计确诊病例趋势图</a>
 			</li>
+			<li>
+				 <a href="#panel-789456" data-toggle="tab">more</a>
+			</li>
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="panel-654207">
-				<!-- 全国新增确诊病例趋势图 -->
+				<!-- 全国现有确诊病例趋势图 -->
 				<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 				   <div id="line1" style="width: 600px;height:400px;"></div>
 				   <script type="text/javascript">
@@ -330,7 +335,7 @@
 				       // 指定图表的配置项和数据
 				       var option = {
 				      	    title: {
-				      	        text: '全国新增确诊病例',
+				      	        text: '全国现有确诊病例',
 				      	        subtext: '单位：例'
 				      	    },
 				      	    tooltip: {
@@ -339,7 +344,8 @@
 				      	    xAxis: {
 				      	        type: 'category',
 				      	        boundaryGap: false,
-				      	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+				      	      	data: ['1.19', '1.20', '1.21', '1.22', '1.23', '1.24', '1.25', '1.26', '1.27', '1.28'
+				       	        	, '1.29', '1.30', '1.31', '2.1', '2.2']
 				      	    },
 				      	    yAxis: {
 				      	        type: 'value',
@@ -352,10 +358,10 @@
 				      	    },
 				      	    series: [
 				      	        {
-				      	            name: '新增确诊',
+				      	            name: '现有确诊',
 				      	            type: 'line',
 				      	            smooth: true,
-				      	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
+				      	            data: [2, 7, 283, 430, 599, 859, 1286, 1970, 2709, 4459, 5906, 7588, 9524, 11443, 13904],       	            
 				      	        }
 				      	    ]
 				      	};
@@ -382,7 +388,8 @@
 				      	    xAxis: {
 				      	        type: 'category',
 				      	        boundaryGap: false,
-				      	        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+				      	      data: ['1.19', '1.20', '1.21', '1.22', '1.23', '1.24', '1.25', '1.26', '1.27', '1.28'
+				       	        	, '1.29', '1.30', '1.31', '2.1', '2.2']
 				      	    },
 				      	    yAxis: {
 				      	        type: 'value',
@@ -398,12 +405,15 @@
 				      	            name: '累计确诊',
 				      	            type: 'line',
 				      	            smooth: true,
-				      	            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],       	            
+				      	            data: [2, 7, 314, 467, 646, 919, 1364, 2073, 2842, 4626, 6106, 7849, 9873, 11917, 14503],       	            
 				      	        }
 				      	    ]
 				      	};
 				       myChart.setOption(option);
 				</script>
+			</div>
+			<div class="tab-pane" id="panel-789456">
+			<a href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_3">百度疫情实时大数据报告</a>
 			</div>
 		</div>
 	</div>
