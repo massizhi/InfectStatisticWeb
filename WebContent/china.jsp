@@ -34,6 +34,7 @@
 			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-20">2020-01-20</a></li>
 		</ul>
 	</div>
+	
 	<%--显示疫情数据信息 --%>
 	<%
 		//out.println(request.getAttribute("haha"));
