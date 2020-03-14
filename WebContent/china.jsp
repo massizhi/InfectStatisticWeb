@@ -64,7 +64,7 @@
 		//未选择时间时，输出信息如下。
 		if (request.getAttribute("info")==null) {
 		%>
-		<table style="margin-left:500px;">
+		<table>
 			<tr>
 			<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
 			</tr>

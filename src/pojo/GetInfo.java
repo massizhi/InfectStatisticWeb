@@ -6,7 +6,50 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-
+	/*
+	<%GetInfo temp2=new GetInfo();
+	String[] args2={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp2.getInfo(args2) %>,
+	<%GetInfo temp3=new GetInfo();
+	String[] args3={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp3.getInfo(args3) %>,
+	<%GetInfo temp4=new GetInfo();
+	String[] args4={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp4.getInfo(args4) %>,
+	<%GetInfo temp5=new GetInfo();
+	String[] args5={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp5.getInfo(args5) %>,
+	<%GetInfo temp6=new GetInfo();
+	String[] args6={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp6.getInfo(args6) %>,
+	<%GetInfo temp7=new GetInfo();
+	String[] args7={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp7.getInfo(args7) %>,
+	<%GetInfo temp8=new GetInfo();
+	String[] args8={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp8.getInfo(args8) %>,
+	<%GetInfo temp9=new GetInfo();
+	String[] args9={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp9.getInfo(args9) %>,
+	<%GetInfo temp10=new GetInfo();
+	String[] args10={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp10.getInfo(args10) %>,
+	<%GetInfo temp11=new GetInfo();
+	String[] args11={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp11.getInfo(args11) %>,
+	<%GetInfo temp12=new GetInfo();
+	String[] args12={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp12.getInfo(args12) %>,
+	<%GetInfo temp13=new GetInfo();
+	String[] args13={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp13.getInfo(args13) %>,
+	<%GetInfo temp14=new GetInfo();
+	String[] args14={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp14.getInfo(args14) %>,
+	<%GetInfo temp15=new GetInfo();
+	String[] args15={"2020-01-19","2",pro,"4","ip"};%>
+	<%=temp15.getInfo(args15) %>	
+	*/
 public class GetInfo {
 	int dailycount=0;//当天所有变化数据的条数
 	int nowcount=0;//现有数据条数
@@ -22,6 +65,23 @@ public class GetInfo {
     int isWrong=0;//输入日期是否出错（输入日期比最新的日志还晚）
     int isChanged=1;//指定日期相比前几天的数据有所变化
     int timeLimits;//获取累计数据值为1，当天数据值为2
+    
+//    void clearData() {
+//    	dailycount=0;//当天所有变化数据的条数
+//    	nowcount=0;//现有数据条数
+//    	allcount=0;//累计数据条数
+//    	changecount=0;//累计变化数据的条数
+//    	all=new line[34];//初始化结果，当天变化结果
+//    	result=new line[34];//总的排序后结果，当天结果
+//    	allResult=new line[34];//总的排序后结果，累计结果
+//    	changeResult=new line[34];//累计变化结果
+//        topath="D:\\test.txt";//输出文档路径
+//        frompath="\\log\\";//log文件路径
+//        index=0;//控制是否输入日期比日志最早一天还早，若是则值为-2
+//        isWrong=0;//输入日期是否出错（输入日期比最新的日志还晚）
+//        isChanged=1;//指定日期相比前几天的数据有所变化
+//        timeLimits=0;
+//    }
     
     public int getInfo(String[] args) throws IOException {
 		//System.out.print("输入查找日期、数据范围(全国数据输入1，省份数据输入2)、省份名（若前一项选择2则需输入）、");
