@@ -36,8 +36,8 @@
     </div>
     
 	<!--选择日期 -->
-	<div class="btn-group" style="margin-left:270px;" id="data">
-		<button class="btn btn-default">请选择日期</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+	<div class="btn-group" style="margin-left:500px;" id="data">
+		<button class="btn btn-default">请选择日期</button> 默认为更新到2020-02-02 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
 		<ul class="dropdown-menu">
 			<li><a href="/InfectStatisticWeb/updateChinaInfo?flag=2020-02-02">2020-02-02</a></li>
 			<li><a href="/InfectStatisticWeb/updateChinaInfo?flag=2020-02-01">2020-02-01</a></li>
@@ -62,7 +62,7 @@
 		//未选择时间时，输出信息如下。
 		if (request.getAttribute("info")==null) {
 		%>
-		<table style="margin-left:270px;">
+		<table style="margin-left:500px;">
 			<tr>
 			<td><%="现有确诊" %></td><td><%="现有疑似" %></td><td><%="现有重症" %></td>
 			</tr>
