@@ -203,11 +203,11 @@
 			    };
 			    myChart.setOption(option);
 			    myChart.on('click', function (params) {
-			        var dataIndex = params.dataIndex;
+			        var dataIndex = params.name;
 			        //console.log(params);
 			        //window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
-			        window.localStorage.setItem("selectedProvince", params.name);
-			        window.open('province.jsp');
+			        window.localStorage.setItem("selectedProvince", params.name);			        
+			        window.open("toProvince?prov="+dataIndex+"");
 			    });
 				</script>
 			</div>
@@ -296,7 +296,7 @@
 			        //console.log(params);
 			        //window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
 			        window.localStorage.setItem("selectedProvince", params.name);
-			        window.open('province.jsp');
+			        window.open('toProvince');
 			    });
 				</script>
 			</div>

@@ -6,19 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import pojo.GetInfo;
 
 /**
- * Servlet implementation class updateProvinceInfo
+ * Servlet implementation class toProvince
  */
-@WebServlet("/updateProvinceInfo")
-public class updateProvinceInfo extends HttpServlet {
+@WebServlet("/toProvince")
+public class toProvince extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateProvinceInfo() {
+    public toProvince() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +30,9 @@ public class updateProvinceInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String flagp=request.getParameter("flagp");//时间		
-		String selectedp=request.getParameter("selectedp");//省份
-		request.setAttribute("provinceInfo", selectedp);
-		String[] args={flagp,"2",selectedp,"2","ip"};
+		String sp=request.getParameter("prov");
+		request.setAttribute("provinceInfo", sp);
+		String[] args={"2020-02-02","2",sp,"2","ip"};
 		try {
 			GetInfo temp=new GetInfo();						
 			request.setAttribute("infop1",temp.getInfo(args));
