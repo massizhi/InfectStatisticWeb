@@ -36,8 +36,8 @@
     </div>
     
 	<!--选择日期 -->
-	<div class="btn-group" style="margin-left:500px;" id="data">
-		<button class="btn btn-default">请选择日期</button> 默认为更新到2020-02-02 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+	<div class="btn-group" style="margin-left:550px;" id="data" align="center">
+		<button class="btn btn-default" >请选择日期</button><button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
 		<ul class="dropdown-menu">
 			<li><a href="/InfectStatisticWeb/updateChinaInfo?flag=2020-02-02">2020-02-02</a></li>
 			<li><a href="/InfectStatisticWeb/updateChinaInfo?flag=2020-02-01">2020-02-01</a></li>
@@ -55,7 +55,9 @@
 			<li><a href="/InfectStatisticWeb/updateChinaInfo?flag=2020-01-20">2020-01-20</a></li>
 		</ul>
 	</div>
+	<sub>默认为2020-02-02</sub>
 	
+	<div align="center" style="font-size:30px;">
 	<%--显示疫情数据信息 --%>
 	<%
 		//out.println(request.getAttribute("haha"));
@@ -108,7 +110,9 @@
 			</tr>
 		</table>	
 		<%} 	
-	%>
+	%>	
+	</div>
+	
 	<div class="country" style="background-color:transparent">
 	<%--显示疫情中国地图信息 --%>
 	<div class="tabbable" id="tabs-649963">

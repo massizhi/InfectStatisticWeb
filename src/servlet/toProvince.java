@@ -57,6 +57,7 @@ public class toProvince extends HttpServlet {
 			args[3]="4";args[4]="dead";
 			GetInfo temp7=new GetInfo();	
 			request.setAttribute("infop8",temp7.getInfo(args));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
