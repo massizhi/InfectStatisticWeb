@@ -29,7 +29,7 @@ public class updateChinaInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String flag=request.getParameter("flag");
+		String flag=request.getParameter("flag");//时间
 		String[] args={flag,"1","2","ip"};
 		try {
 			GetInfo temp=new GetInfo();						
