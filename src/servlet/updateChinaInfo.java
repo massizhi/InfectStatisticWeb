@@ -11,7 +11,7 @@ import pojo.GetInfo;
 /**
  * Servlet implementation class updateInfo
  */
-@WebServlet("/updateInfo")
+@WebServlet("/updateChinaInfo")
 public class updateChinaInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

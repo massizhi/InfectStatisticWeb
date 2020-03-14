@@ -9,6 +9,27 @@
 <title>province</title>
 </head>
 <body>
+	<!--选择日期 -->
+	<div class="btn-group">
+		<button class="btn btn-default">请选择日期</button> <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-02">2020-02-02</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-02-01">2020-02-01</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-31">2020-01-31</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-30">2020-01-30</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-29">2020-01-29</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-28">2020-01-28</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-27">2020-01-27</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-26">2020-01-26</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-25">2020-01-25</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-24">2020-01-24</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-23">2020-01-23</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-22">2020-01-22</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-21">2020-01-21</a></li>
+			<li><a href="/InfectStatisticWeb/updateInfo?flag=2020-01-20">2020-01-20</a></li>
+		</ul>
+	</div>
+	
 	<%--显示疫情数据信息 --%>
 	<table>
 		<tr>
